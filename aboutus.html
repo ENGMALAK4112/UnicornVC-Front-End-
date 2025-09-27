@@ -1,0 +1,332 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Unicorn VC</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+  <script>
+    tailwind.config = {
+      darkMode: 'class'
+    }
+  </script>
+  <style>
+    .hero-animate { transform: translateY(20px); }
+    .hover-scale:hover { transform: scale(1.05); transition: transform 0.3s ease; }
+    .hover-bounce:hover { animation: bounce 0.6s; }
+    @keyframes bounce { 0%,100% { transform: translateY(0); } 50% { transform: translateY(-8px); } }
+    .why-us-img { transition: transform 0.3s ease, box-shadow 0.3s ease; }
+    .why-us-img:hover { transform: translateY(-8px) scale(1.05); box-shadow: 0 10px 20px rgba(0,0,0,0.2); }
+  </style>
+</head>
+<body class="bg-white dark:bg-black text-gray-700 dark:text-gray-300 min-h-screen flex flex-col">
+
+<!-- Navbar -->
+<nav class="py-4 shadow-sm dark:shadow-gray-700 dark:bg-black dark:text-gray-300">
+  <div class="container mx-auto flex justify-between items-center px-6">
+    <div class="flex items-center space-x-2">
+      <div class="w-6 h-6 rounded-full bg-gradient-to-b from-blue-500 to-green-500"></div>
+      <span class="text-sm font-medium text-blue-700 dark:text-blue-700">Unicorn <span class="text-teal-600 dark:text-teal-600">VC</span></span>
+    </div>
+
+    <div class="hidden md:flex items-center space-x-6 dark:bg-black">
+      <a href="index.html" class="text-sm font-medium hover:text-blue-600 dark:hover:text-blue-400">Home</a>
+      <a href="aboutus.html" class="text-sm font-medium text-blue-600 dark:text-blue-600 hover:text-blue-600 dark:hover:text-blue-400">About</a>
+      <a href="#Pricing" class="text-sm font-medium text-gray-700 dark:text-gray-300 hover:text-blue-600 dark:hover:text-blue-400">Pricing</a>
+      <a href="#" class="text-sm font-medium text-gray-700 dark:text-gray-300 hover:text-blue-600 dark:hover:text-blue-400">Contact</a>
+
+      <button id="dark-mode-btn" class="w-8 h-8 flex items-center justify-center rounded-full bg-gray-100 dark:bg-black transition-colors duration-500">
+        <img src="/images/sun2.png" alt="Dark Mode" class="w-6 h-6">
+      </button>
+
+      <button class="w-8 h-8 flex items-center justify-center rounded-full bg-gray-100  transition-colors duration-500">
+        <img src="/images/trans2.png" alt="Language" class="w-6 h-6">
+      </button>
+
+      <a href="login.html" class="px-6 py-2 rounded-full bg-teal-600 dark:bg-teal-700 text-white text-sm font-medium hover:bg-teal-700 dark:hover:bg-teal-600 transition-colors duration-500">
+        Login
+      </a>
+
+      <a href="signin.html" class="px-6 py-2 rounded-full bg-blue-700 dark:bg-blue-800 text-white text-sm font-medium hover:bg-blue-800 dark:hover:bg-blue-700 transition-colors duration-500">
+        Get started
+      </a>
+    </div>
+
+    <button onclick="toggleMenu()" class="md:hidden text-2xl text-gray-700 dark:text-gray-300">☰</button>
+  </div>
+
+  <div id="nav-links" class="hidden flex-col items-center space-y-4 mt-4 pb-4 md:hidden bg-gray-50 dark:bg-black shadow rounded-lg mx-4 transition-colors duration-500">
+    <a href="index.html" class="text-sm font-medium hover:text-blue-600 dark:hover:text-blue-400">Home</a>
+    <a href="aboutus.html" class="text-sm font-medium text-gray-700 dark:text-gray-300 hover:text-blue-600 dark:hover:text-blue-400">About</a>
+    <a href="#Pricing" class="text-sm font-medium text-gray-700 dark:text-gray-300 hover:text-blue-600 dark:hover:text-blue-400">Pricing</a>
+    <a href="#" class="text-sm font-medium text-gray-700 dark:text-gray-300 hover:text-blue-600 dark:hover:text-blue-400">Contact</a>
+
+    <button id="dark-mode-btn-mobile" class="w-8 h-8 flex items-center justify-center rounded-full bg-gray-100 dark:bg-gray-800 transition-colors duration-500">
+      <img src="/images/sun2.png" alt="Dark Mode" class="w-6 h-6">
+    </button>
+
+    <button class="w-8 h-8 flex items-center justify-center rounded-full bg-gray-100 transition-colors duration-500">
+      <img src="/images/trans2.png" alt="Language" class="w-6 h-6">
+    </button>
+
+    <a href="login.html" class="px-6 py-2 rounded-full bg-teal-600 dark:bg-teal-700 text-white text-sm font-medium hover:bg-teal-700 dark:hover:bg-teal-600 transition-colors duration-500">Login</a>
+    <a href="signin.html" class="px-6 py-2 rounded-full bg-blue-700 dark:bg-blue-800 text-white text-sm font-medium hover:bg-blue-800 dark:hover:bg-blue-700 transition-colors duration-500">Get started</a>
+  </div>
+</nav>
+
+<main class="bg-white dark:bg-black dark:text-gray-300">
+    <!-- Hero Section -->
+<section class="relative rounded-2xl m-6 overflow-hidden min-h-screen md:min-h-[80vh] lg:min-h-[70vh] dark:bg-black dark:text-gray-300">
+    <img src="/images/share.jpg" alt="Background" class="absolute inset-0 w-full h-full object-cover" />
+  <div class="absolute inset-0 bg-black bg-opacity-50 flex flex-col justify-center items-center text-center text-white p-6">
+    <h1 class="text-2xl md:text-4xl font-bold mb-4 hero-animate">
+      We connect ideas with investment to build a shared future
+    </h1>
+    <p class="text-sm md:text-lg max-w-2xl mb-6 hero-animate">
+      Our smart platform connects investors with entrepreneurs through a safe and trusted environment, starting from Saudi Arabia to the world.
+    </p>
+    <a href="#vision" class="bg-blue-600 hover:bg-blue-500 text-white font-semibold py-3 px-6 rounded-full transition hover-scale">
+      Learn More
+    </a>
+  </div>
+</section>
+
+  <!-- Vision Section -->
+  <section class="py-16 px-6 md:px-16 bg-gray-100 rounded-xl shadow-sm mx-4 md:mx-12 mb-12 dark:bg-black dark:text-white hero-animate">
+    <h2 class="text-2xl md:text-3xl font-bold text-left mb-6">Our Vision</h2>
+    <p class="text-gray-700 leading-relaxed mb-4 dark:text-gray-200 hero-animate">
+      Our idea started when the project manager noticed the absence of an Arab electronic platform that presented the role of the investment mediator with professionalism, safety and transparency. From here we decided to build a smart platform linking investors with entrepreneurs,<br><br> while relying on experts and advanced algorithms to review projects and connect them to the appropriate investor.
+    </p>
+    <p class="text-gray-700 leading-relaxed mb-4 dark:text-gray-200 hero-animate">
+      We decided to start with a basic step:<br>the direct link between the investor and the entrepreneur, to gradually develop the platform to become an integrated investment environment on a global level.
+    </p>
+  </section>
+
+  <!-- Team Section -->
+  <section id="Team" class="py-16 px-6 md:px-16">
+    <h2 class="text-2xl md:text-3xl font-bold text-center mb-12 hero-animate">Our Team</h2>
+    <p class="text-center text-gray-600 max-w-2xl mx-auto mb-12 dark:text-gray-200 hero-animate">
+      stand behind the platform A team of entrepreneurs, investment experts, and creative developers. We work together to give you the best investment experience.
+    </p>
+    <h2 class="text-2xl md:text-3xl font-bold text-center mb-12 hero-animate">Administrative Team</h2>
+    <div class="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-6 gap-8 justify-items-center">
+      <!-- Team Member Card -->
+      <div class="text-center hover-scale">
+        <img src="/images/team.jpg" alt="Team Member" class="w-28 h-28 rounded-full object-cover mb-4 shadow-md">
+        <h3 class="text-lg font-semibold">John Doe</h3>
+        <p class="text-sm text-gray-500">Founder & CEO</p>
+      </div>
+
+      <div class="text-center hover-scale">
+        <img src="/images/team.jpg" alt="Team Member" class="w-28 h-28 rounded-full object-cover mb-4 shadow-md">
+        <h3 class="text-lg font-semibold">John Doe</h3>
+        <p class="text-sm text-gray-500">Founder & CEO</p>
+      </div>
+
+      <div class="text-center hover-scale">
+        <img src="/images/team.jpg" alt="Team Member" class="w-28 h-28 rounded-full object-cover mb-4 shadow-md">
+        <h3 class="text-lg font-semibold">John Doe</h3>
+        <p class="text-sm text-gray-500">Founder & CEO</p>
+      </div>
+
+      <!-- Repeat more members -->
+      <div class="text-center hover-scale">
+        <img src="/images/team.jpg" alt="Team Member" class="w-28 h-28 rounded-full object-cover mb-4 shadow-md">
+        <h3 class="text-lg font-semibold">Jane Smith</h3>
+        <p class="text-sm text-gray-500">Project Manager</p>
+      </div>
+
+      <div class="text-center hover-scale">
+        <img src="/images/team.jpg" alt="Team Member" class="w-28 h-28 rounded-full object-cover mb-4 shadow-md">
+        <h3 class="text-lg font-semibold">Michael Brown</h3>
+        <p class="text-sm text-gray-500">Investor Relations</p>
+      </div>
+
+      <div class="text-center hover-scale">
+        <img src="/images/team.jpg" alt="Team Member" class="w-28 h-28 rounded-full object-cover mb-4 shadow-md">
+        <h3 class="text-lg font-semibold">Emily White</h3>
+        <p class="text-sm text-gray-500">Marketing Lead</p>
+      </div>
+    </div>
+    <br>
+    <br>
+    <h2 class="text-2xl md:text-3xl font-bold text-center mb-12 hero-animate">Development Team</h2>
+    <div class="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-6 gap-8 justify-items-center">
+      <!-- Team Member Card -->
+      <div class="text-center hover-scale">
+        <img src="/images/team.jpg" alt="Team Member" class="w-28 h-28 rounded-full object-cover mb-4 shadow-md">
+        <h3 class="text-lg font-semibold">John Doe</h3>
+        <p class="text-sm text-gray-500">Founder & CEO</p>
+      </div>
+
+      <div class="text-center hover-scale">
+        <img src="/images/team.jpg" alt="Team Member" class="w-28 h-28 rounded-full object-cover mb-4 shadow-md">
+        <h3 class="text-lg font-semibold">John Doe</h3>
+        <p class="text-sm text-gray-500">Founder & CEO</p>
+      </div>
+
+      <div class="text-center hover-scale">
+        <img src="/images/team.jpg" alt="Team Member" class="w-28 h-28 rounded-full object-cover mb-4 shadow-md">
+        <h3 class="text-lg font-semibold">John Doe</h3>
+        <p class="text-sm text-gray-500">Founder & CEO</p>
+      </div>
+
+      <!-- Repeat more members -->
+      <div class="text-center hover-scale">
+        <img src="/images/team.jpg" alt="Team Member" class="w-28 h-28 rounded-full object-cover mb-4 shadow-md">
+        <h3 class="text-lg font-semibold">Jane Smith</h3>
+        <p class="text-sm text-gray-500">Project Manager</p>
+      </div>
+
+      <div class="text-center hover-scale">
+        <img src="/images/team.jpg" alt="Team Member" class="w-28 h-28 rounded-full object-cover mb-4 shadow-md">
+        <h3 class="text-lg font-semibold">Michael Brown</h3>
+        <p class="text-sm text-gray-500">Investor Relations</p>
+      </div>
+
+      <div class="text-center hover-scale">
+        <img src="/images/team.jpg" alt="Team Member" class="w-28 h-28 rounded-full object-cover mb-4 shadow-md">
+        <h3 class="text-lg font-semibold">Emily White</h3>
+        <p class="text-sm text-gray-500">Marketing Lead</p>
+      </div>
+    </div>
+  </section>
+</main>
+
+ <!-- Footer -->
+  <footer class="relative bg-gray-100 text-gray-700 dark:bg-black dark:text-gray-300">
+    <!-- Blue Slanted Top (معكوس) -->
+    <div class="w-full h-12 bg-blue-700" style="clip-path: polygon(100% 0, 0 100%, 0 0);"></div>
+
+    <!-- Main Footer Content -->
+    <div class="max-w-6xl mx-auto px-6 py-12 grid grid-cols-1 md:grid-cols-4 gap-8 text-sm">
+      
+      <!-- Logo -->
+      <div>
+        <div class="flex items-center space-x-2 mb-4">
+          <div class="w-6 h-6 rounded-full bg-gradient-to-b from-blue-500 to-green-500"></div>
+          <span class="font-medium">Unicorn <span class="text-gray-500">VC</span></span>
+        </div>
+      </div>
+
+      <!-- Contact Us -->
+      <div>
+        <h3 class="font-semibold mb-2 font-bold text-gray-900 dark:text-gray-100 dark:font-bold">Contact Us</h3>
+        <p class="flex items-start space-x-2 mb-2">
+          <img src="/images/location.png" alt="Location" class="w-6 h-6 mt-1 bg-gray-100 rounded-full">
+          <span>Wisconsin Ave, Suite 700<br>Chevy Chase, Maryland 20815</span>
+        </p>
+        <p class="flex items-center space-x-2">
+          <img src="/images/email.png" alt="Email" class="w-6 h-5 bg-gray-100 ">
+          <a href="mailto:support@unicornvc.com" class="hover:underline">support@unicornvc.com</a>
+        </p>
+      </div>
+
+      <!-- Links -->
+      <div>
+        <ul class="space-y-2">
+          <li><a href="aboutus.html" class="hover:underline">About</a></li>
+          <li><a href="#" class="hover:underline">Features</a></li>
+          <li><a href="#" class="hover:underline">Pricing</a></li>
+          <li><a href="#" class="hover:underline">Projects</a></li>
+          <li><a href="#Team" class="hover:underline">Team</a></li>
+        </ul>
+      </div>
+
+      <!-- Send Message -->
+      <div>
+        <h3 class="font-semibold mb-2 text-gray-900 dark:text-gray-100 dark:font-bold">Send Message:</h3>
+        <form class="space-y-2">
+  <input type="email" placeholder="Email" class="w-full px-3 py-2 rounded-full border border-gray-300 focus:outline-none focus:ring-1 focus:ring-blue-500 text-sm">
+  <textarea placeholder="Message" rows="2" class="w-full px-3 py-2 rounded-lg border border-gray-300 focus:outline-none focus:ring-1 focus:ring-blue-500 text-sm"></textarea>
+  
+  <div class="flex justify-center">
+    <button type="submit" class="px-10 py-1.5 rounded-full bg-blue-700 text-white text-sm hover:bg-blue-800">Submit</button>
+  </div>
+</form>
+
+      </div>
+    </div>
+
+    <!-- Bottom Bar -->
+    <div class="border-t border-gray-300">
+      <div class="max-w-6xl mx-auto px-6 py-4 flex flex-col md:flex-row justify-between items-center text-xs text-gray-500 space-y-3 md:space-y-0">
+        
+        <!-- Left -->
+        <p>© 2025 Unicorn VC, All rights reserved.</p>
+
+        <!-- Center Links -->
+        <div class="flex flex-wrap justify-center space-x-4">
+          <a href="#" class="hover:underline">Privacy Policy</a>
+          <a href="#" class="hover:underline">Terms of Use</a>
+          <a href="#" class="hover:underline">Subscribe and redeem</a>
+          <a href="#" class="hover:underline">Legal</a>
+          <a href="#" class="hover:underline">Site Map</a>
+        </div>
+
+        <!-- Social Icons -->
+        <div class="flex flex-col items-center space-y-2">
+          <span class="text-sm">Follow us</span>
+          <div class="flex space-x-3">
+            <a href="#"><img src="/images/facebook.png" alt="Facebook" class="w-4 h-4 bg-gray-100 rounded-full"></a>
+            <a href="#"><img src="/images/insta.png" alt="Instagram" class="w-4 h-4 bg-gray-100 rounded-full"></a>
+            <a href="#"><img src="/images/in.png" alt="LinkedIn" class="w-4 h-4 bg-gray-100 rounded-full"></a>
+          </div>
+        </div>
+
+      </div>
+    </div>
+  </footer>
+
+  <script>
+  // Navbar Mobile Menu
+  function toggleMenu() {
+    const menu = document.getElementById("nav-links");
+    menu.classList.toggle("hidden");
+    menu.classList.toggle("flex");
+  }
+
+  // Hero animation
+  document.addEventListener('DOMContentLoaded', () => {
+    const heroItems = document.querySelectorAll('.hero-animate');
+    heroItems.forEach((item, index) => {
+      item.style.opacity = 0;
+      setTimeout(() => {
+        item.style.transition = 'opacity 0.8s ease-out, transform 0.8s ease-out';
+        item.style.opacity = 1;
+        item.style.transform = 'translateY(0)';
+      }, index * 300);
+    });
+
+    // تحقق من الوضع الداكن عند تحميل الصفحة
+    if(localStorage.getItem('darkMode') === 'enabled') {
+      document.body.classList.add('dark');
+      // تغيير أيقونة الزر
+      document.querySelectorAll('#dark-mode-btn img, #dark-mode-btn-mobile img').forEach(img => {
+        img.src = '/images/moon2.png';
+      });
+    }
+  });
+
+  // Dark Mode toggle مع حفظ الحالة
+  function setupDarkMode(btnId) {
+    const darkBtn = document.getElementById(btnId);
+    darkBtn.addEventListener('click', () => {
+      document.body.classList.toggle('dark');
+      const isDark = document.body.classList.contains('dark');
+
+      // تغيير أيقونة الزر
+      const img = darkBtn.querySelector('img');
+      img.src = isDark ? '/images/moon2.png' : '/images/sun2.png';
+
+      // حفظ الحالة في localStorage
+      localStorage.setItem('darkMode', isDark ? 'enabled' : 'disabled');
+    });
+  }
+
+  setupDarkMode('dark-mode-btn');
+  setupDarkMode('dark-mode-btn-mobile');
+</script>
+
+</body>
+</html>
