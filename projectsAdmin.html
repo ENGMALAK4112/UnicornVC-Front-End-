@@ -29,37 +29,13 @@
   </style>
 </head>
 <body class="bg-gray-50 text-gray-800 font-sans">
-
-  <!-- شريط التنقل العلوي -->
-  <nav class="bg-white rounded-md shadow-sm p-4 flex items-center justify-between w-full fixed top-0 z-50 p-4 md:px-8 lg:px-16 ">
-    <div class="flex items-center space-x-2">
+  <!-- الشريط الجانبي -->
+  <aside class="fixed top-30 left h-[calc(100vh-4rem)] w-64 flex flex-col overflow-y-auto border-l border-gray-200 bg-white px-5 py-8 hidden md:flex">
+<div class="flex items-center space-x-2">
       <div class="w-6 h-6 rounded-full bg-gradient-to-b from-blue-500 to-green-500"></div>
       <span class="text-sm font-medium text-blue-700 dark:text-blue-700">Unicorn <span class="text-teal-600 dark:text-teal-600">VC</span></span>
     </div>
-    <div class="hidden md:flex items-center gap-x-8 text-gray-600 font-medium">
-      <a href="#" class="hover:text-blue-500">Home</a>
-      <a href="#" class="hover:text-blue-500">About</a>
-      <a href="#" class="hover:text-blue-500">Pricing</a>
-      <a href="#" class="hover:text-blue-500">Contact</a>
-    </div>
-    <div class="flex items-center gap-x-4">
-      <button id="dark-mode-btn" class="w-8 h-8 flex items-center justify-center rounded-full bg-gray-100  transition-colors duration-500 dark:bg-black">
-        <img src="/images/sun2.png" alt="Dark Mode" class="w-6 h-6">
-      </button>
-
-      <button class="w-8 h-8 flex items-center justify-center rounded-full bg-gray-100  transition-colors duration-500">
-        <img src="/images/trans2.png" alt="Language" class="w-6 h-6">
-      </button>
-      <a href="#" class="px-6 py-2 bg-blue-600 text-white rounded-full font-semibold hover:bg-blue-700">تسجيل الخروج</a>
-      <button class="text-gray-500 hover:text-gray-800">
-        <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="w-6 h-6"><path d="M19 21v-2a4 4 0 0 0-4-4H9a4 4 0 0 0-4 4v2"></path><circle cx="12" cy="7" r="4"></circle></svg>
-      </button>
-    </div>
-  </nav>
-
-  <!-- الشريط الجانبي -->
-  <aside class="fixed top-16 left h-[calc(100vh-4rem)] w-64 flex flex-col overflow-y-auto border-l border-gray-200 bg-white px-5 py-8 hidden md:flex">
-                <nav class="-mx-3 space-y-2">
+                <nav class="-mx-3 space-y-2 pt-5">
                     <!-- رابط لوحة التحكم (نشط) -->
                     <a class="flex transform items-center rounded-lg px-3 py-2 text-gray-500 transition-colors duration-300" href="indexAdmin.html">
                         <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="h-5 w-5" aria-hidden="true"><path d="m3 9 9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"></path><polyline points="9 22 9 12 15 12 15 22"></polyline></svg>
@@ -156,9 +132,10 @@
 
     <!-- Card 1: Ready to Publish -->
   <div class="bg-white border rounded-xl shadow p-6 flex flex-col justify-between relative">
-    <span class="absolute top-20 right-4 bg-green-500 text-green-900 text-sm px-6 py-2 rounded-full rounded-tr rounded-bl">Ready to Publish</span>
+    <span class="absolute top-20 right-4 bg-green-500 text-white text-sm px-6 py-2 rounded-full rounded-tr rounded-bl">Ready to Publish</span>
     <h3 class="text-3xl font-bold text-gray-800 mb-2">
       <span class="text-gray-800">Unicorn</span><span class="text-yellow-500">VC</span>
+      
     </h3>
     <p class="text-sm text-gray-600 mb-1">31 September 2025</p>
     <p class="text-sm font-bold text-gray-700">Name</p>
@@ -244,188 +221,5 @@
 
     </section>
   </main>
-
-<!-- Footer -->
-  <footer class="relative bg-gray-100 text-gray-700">
-    <!-- Blue Slanted Top (معكوس) -->
-    <div class="w-full h-12 bg-blue-700" style="clip-path: polygon(100% 0, 0 100%, 0 0);"></div>
-
-    <!-- Main Footer Content -->
-    <div class="max-w-6xl mx-auto px-6 py-12 grid grid-cols-1 md:grid-cols-4 gap-8 text-sm">
-      
-      <!-- Logo -->
-      <div>
-        <div class="flex items-center space-x-2 mb-4">
-          <div class="w-6 h-6 rounded-full bg-gradient-to-b from-blue-500 to-green-500"></div>
-          <span class="font-medium">Unicorn <span class="text-gray-500">VC</span></span>
-        </div>
-      </div>
-
-      <!-- Contact Us -->
-      <div>
-        <h3 class="font-semibold mb-2 font-bold text-gray-900 dark:text-gray-100 dark:font-bold">Contact Us</h3>
-        <p class="flex items-start space-x-2 mb-2">
-          <img src="/images/location.png" alt="Location" class="w-6 h-6 mt-1 bg-gray-100 rounded-full">
-          <span>Wisconsin Ave, Suite 700<br>Chevy Chase, Maryland 20815</span>
-        </p>
-        <p class="flex items-center space-x-2">
-          <img src="/images/email.png" alt="Email" class="w-6 h-5 bg-gray-100 ">
-          <a href="mailto:support@unicornvc.com" class="hover:underline">support@unicornvc.com</a>
-        </p>
-      </div>
-
-      <!-- Links -->
-      <div>
-        <ul class="space-y-2">
-          <li><a href="#" class="hover:underline">About</a></li>
-          <li><a href="#" class="hover:underline">Features</a></li>
-          <li><a href="#" class="hover:underline">Pricing</a></li>
-          <li><a href="#" class="hover:underline">Projects</a></li>
-          <li><a href="#" class="hover:underline">Team</a></li>
-        </ul>
-      </div>
-
-      <!-- Send Message -->
-      <div>
-        <h3 class="font-semibold mb-2 text-gray-900 dark:text-gray-100 dark:font-bold">Send Message:</h3>
-        <form class="space-y-2">
-  <input type="email" placeholder="Email" class="w-full px-3 py-2 rounded-full border border-gray-300 focus:outline-none focus:ring-1 focus:ring-blue-500 text-sm">
-  <textarea placeholder="Message" rows="2" class="w-full px-3 py-2 rounded-lg border border-gray-300 focus:outline-none focus:ring-1 focus:ring-blue-500 text-sm"></textarea>
-  
-  <div class="flex justify-center">
-    <button type="submit" class="px-10 py-1.5 rounded-full bg-blue-700 text-white text-sm hover:bg-blue-800">Submit</button>
-  </div>
-</form>
-
-      </div>
-    </div>
-
-    <!-- Bottom Bar -->
-    <div class="border-t border-gray-300">
-      <div class="max-w-6xl mx-auto px-6 py-4 flex flex-col md:flex-row justify-between items-center text-xs text-gray-500 space-y-3 md:space-y-0">
-        
-        <!-- Left -->
-        <p>© 2025 Unicorn VC, All rights reserved.</p>
-
-        <!-- Center Links -->
-        <div class="flex flex-wrap justify-center space-x-4">
-          <a href="#" class="hover:underline">Privacy Policy</a>
-          <a href="#" class="hover:underline">Terms of Use</a>
-          <a href="#" class="hover:underline">Subscribe and redeem</a>
-          <a href="#" class="hover:underline">Legal</a>
-          <a href="#" class="hover:underline">Site Map</a>
-        </div>
-
-        <!-- Social Icons -->
-        <div class="flex flex-col items-center space-y-2">
-          <span class="text-sm">Follow us</span>
-          <div class="flex space-x-3">
-            <a href="#"><img src="/images/facebook.png" alt="Facebook" class="w-4 h-4 bg-gray-100 rounded-full"></a>
-            <a href="#"><img src="/images/insta.png" alt="Instagram" class="w-4 h-4 bg-gray-100 rounded-full"></a>
-            <a href="#"><img src="/images/in.png" alt="LinkedIn" class="w-4 h-4 bg-gray-100 rounded-full"></a>
-          </div>
-        </div>
-
-      </div>
-    </div>
-  </footer>
-
-  <script>
-  // Navbar Mobile Menu
-  function toggleMenu() {
-    const menu = document.getElementById("nav-links");
-    menu.classList.toggle("hidden");
-    menu.classList.toggle("flex");
-  }
-
-  // Hero animation
-  document.addEventListener('DOMContentLoaded', () => {
-    const heroItems = document.querySelectorAll('.hero-animate');
-    heroItems.forEach((item, index) => {
-      item.style.opacity = 0;
-      setTimeout(() => {
-        item.style.transition = 'opacity 0.8s ease-out, transform 0.8s ease-out';
-        item.style.opacity = 1;
-        item.style.transform = 'translateY(0)';
-      }, index * 300);
-    });
-
-    // تحقق من الوضع الداكن عند تحميل الصفحة
-    if(localStorage.getItem('darkMode') === 'enabled') {
-      document.body.classList.add('dark');
-      // تغيير أيقونة الزر
-      document.querySelectorAll('#dark-mode-btn img, #dark-mode-btn-mobile img').forEach(img => {
-        img.src = '/images/moon2.png';
-      });
-    }
-  });
-
-  // Dark Mode toggle مع حفظ الحالة
-  function setupDarkMode(btnId) {
-    const darkBtn = document.getElementById(btnId);
-    darkBtn.addEventListener('click', () => {
-      document.body.classList.toggle('dark');
-      const isDark = document.body.classList.contains('dark');
-
-      // تغيير أيقونة الزر
-      const img = darkBtn.querySelector('img');
-      img.src = isDark ? '/images/moon2.png' : '/images/sun2.png';
-
-      // حفظ الحالة في localStorage
-      localStorage.setItem('darkMode', isDark ? 'enabled' : 'disabled');
-    });
-  }
-
-  setupDarkMode('dark-mode-btn');
-  setupDarkMode('dark-mode-btn-mobile');
-</script>
-
-
-  <!-- Charts script -->
-  <script>
-    // سبلاينات صغيرة (spark)
-    const makeSpark = (elId, data) => {
-      const ctx = document.getElementById(elId).getContext('2d');
-      new Chart(ctx, {
-        type: 'line',
-        data: { labels: data.map((_,i)=>i), datasets: [{ data, borderWidth:2, borderColor:'#2563eb', backgroundColor:'rgba(37,99,235,0.08)', fill:true, tension:0.4, pointRadius:0 }] },
-        options: { responsive:true, maintainAspectRatio:false, plugins:{legend:{display:false}}, scales:{x:{display:false}, y:{display:false}} }
-      });
-    };
-    makeSpark('spark1', [5,8,6,10,9,12,11,9,13]);
-    makeSpark('spark2', [2,3,4,3,5,4,6,5,7]);
-    makeSpark('spark3', [10,12,9,11,14,16,15,18,20]);
-
-    // الرسم البياني الرئيسي
-    const ctxMain = document.getElementById('mainChart').getContext('2d');
-    new Chart(ctxMain, {
-      type: 'bar',
-      data: {
-        labels: ['January','February','March','April','May','June','July'],
-        datasets: [
-          { label: 'Sales', data: [65,59,80,81,56,55,40], backgroundColor: '#2563eb' },
-          { label: 'Revenue', data: [28,48,40,19,86,27,90], backgroundColor: '#60a5fa' }
-        ]
-      },
-      options: {
-        responsive: true,
-        plugins: { legend: { position: 'top' } },
-        scales: {
-          x: { grid: { display: false } },
-          y: { grid: { color: 'rgba(0,0,0,0.05)' } }
-        }
-      }
-    });
-
-    // تفعيل وضع داكن بسيط
-    document.getElementById('darkToggle').addEventListener('click', () => {
-      document.documentElement.classList.toggle('dark');
-      if(document.documentElement.classList.contains('dark')){
-        document.body.classList.add('bg-gray-900','text-gray-100');
-      } else {
-        document.body.classList.remove('bg-gray-900','text-gray-100');
-      }
-    });
-  </script>
 </body>
 </html>
