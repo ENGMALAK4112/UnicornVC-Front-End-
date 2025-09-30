@@ -55,7 +55,7 @@
     <button onclick="toggleMenu()" class="md:hidden text-2xl text-gray-700 dark:text-gray-300">☰</button>
   </div>
 
-  <div id="nav-links" class="hidden flex-col items-center space-y-4 mt-4 pb-4 md:hidden bg-gray-50 dark:bg-black shadow rounded-lg mx-4 transition-colors duration-500">
+  <div id="nav-links" class="hidden flex-col items-right space-y-4 mt-4 pb-4 md:hidden bg-gray-50 dark:bg-black shadow rounded-lg mx-4 transition-colors duration-500">
     <a href="index.html" class="text-sm font-medium text-blue-600 dark:text-blue-400">الرئيسية</a>
     <a href="aboutus.html" class="text-sm font-medium text-gray-700 dark:text-gray-300 hover:text-blue-600 dark:hover:text-blue-400">عننا</a>
     <a href="#Pricing" class="text-sm font-medium text-gray-700 dark:text-gray-300 hover:text-blue-600 dark:hover:text-blue-400">الاسعار</a>
@@ -88,14 +88,14 @@
         <p class="mt-4 text-xm text-gray-200 hero-animate">
          تواصل مع رواد الأعمال الطموحين أو اكتشف فرصًا استثمارية واعدة - كل ذلك عبر منصة رقمية ذكية وآمنة وشفافة.
         </p>
-        <div class="flex gap-4 mt-6 hero-animate">
-          <a href="#" class="flex items-center gap-2 bg-blue-800 text-white px-4 py-2 rounded-lg shadow hover:bg-gray-300 hover:text-blue-800 text-sm font-medium transition-colors duration-500">
-            <span class="material-icons">apple</span> تحميل لنظام IOS
-          </a>
-          <a href="#" class="flex items-center gap-2 bg-blue-800 text-white px-4 py-2 rounded-lg shadow hover:bg-gray-300 hover:text-blue-800 text-sm font-medium transition-colors duration-500">
-            <span class="material-icons">android</span> تحميل لنظام الاندرويد
-          </a>
-        </div>
+        <div class="flex flex-col md:flex-row gap-4 mt-6 hero-animate">
+  <a href="#" class="flex items-center gap-2 bg-blue-800 text-white px-4 py-2 rounded-lg shadow hover:bg-gray-300 hover:text-blue-800 text-sm font-medium transition-colors duration-500">
+    <span class="material-icons">apple</span> تحميل لنظام IOS
+  </a>
+  <a href="#" class="flex items-center gap-2 bg-blue-800 text-white px-4 py-2 rounded-lg shadow hover:bg-gray-300 hover:text-blue-800 text-sm font-medium transition-colors duration-500">
+    <span class="material-icons">android</span> تحميل لنظام الاندرويد
+  </a>
+</div>
       </div>
     </div>
   </section>
@@ -169,7 +169,7 @@
     </div>
 
     <!-- Cards Grid -->
-    <div class="grid grid-cols-2 md:grid-cols-2 lg:grid-cols-4 gap-8 max-w-7xl mx-auto">
+    <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-8 max-w-7xl mx-auto">
 
             <!-- Basic, Pro, Enterprise Plans (كرر نفس الأسلوب مع dark: classes لكل بطاقة) -->
       <!-- Basic Plan -->
@@ -304,34 +304,35 @@
       </div>
     </div>
 
-    <!-- Bottom Bar -->
-    <div class="border-t border-gray-300">
-      <div class="max-w-6xl mx-auto px-6 py-4 flex flex-col md:flex-row justify-between items-center text-xs text-gray-500 space-y-3 md:space-y-0">
-        
-        <!-- Left -->
-        <p>© 2025 Unicorn VC, All rights reserved.</p>
+<!-- Bottom Bar -->
+<div class="border-t border-gray-300 bg-white">
+  <div class="max-w-6xl mx-auto px-6 py-4 flex flex-col md:flex-row justify-between items-center text-xs text-gray-700 space-y-4 md:space-y-0">
+    
+    <!-- Left -->
+    <p>© 2025 Unicorn VC, All rights reserved.</p>
 
-        <!-- Center Links -->
-        <div class="flex flex-wrap justify-center space-x-4">
-          <a href="#" class="hover:underline">خريطة الموقع</a>
-          <a href="#" class="hover:underline">قانوني</a>
-          <a href="#" class="hover:underline">الاشتراك و الاسترداد</a>
-          <a href="#" class="hover:underline">الاستخدام</a>
-          <a href="#" class="hover:underline">سياسة الخصوصية</a>
-        </div>
+    <!-- Center Links -->
+    <div class="flex flex-wrap justify-center gap-4 text-sm">
+      <a href="#" class="hover:underline">خريطة الموقع</a>
+      <a href="#" class="hover:underline">قانوني</a>
+      <a href="#" class="hover:underline">الاشتراك و الاسترداد</a>
+      <a href="#" class="hover:underline">الاستخدام</a>
+      <a href="#" class="hover:underline">سياسة الخصوصية</a>
+    </div>
 
-        <!-- Social Icons -->
-        <div class="flex flex-col items-center space-y-2">
-          <span class="text-sm">تابعونا على</span>
-          <div class="flex space-x-3 space-x-reverse">
-            <a href="#"><img src="images/facebook.png" alt="Facebook" class="w-4 h-4 bg-gray-100 rounded-full"></a>
-            <a href="#"><img src="images/insta.png" alt="Instagram" class="w-4 h-4 bg-gray-100 rounded-full"></a>
-            <a href="#"><img src="images/in.png" alt="LinkedIn" class="w-4 h-4 bg-gray-100 rounded-full"></a>
-          </div>
-        </div>
-
+    <!-- Social Icons -->
+    <div class="flex flex-col items-center space-y-2">
+      <span class="text-sm">تابعونا على</span>
+      <div class="flex space-x-3 space-x-reverse">
+        <a href="#"><img src="images/facebook.png" alt="Facebook" class="w-6 h-6 bg-gray-100 rounded-full"></a>
+        <a href="#"><img src="images/insta.png" alt="Instagram" class="w-6 h-6 bg-gray-100 rounded-full"></a>
+        <a href="#"><img src="images/in.png" alt="LinkedIn" class="w-6 h-6 bg-gray-100 rounded-full"></a>
       </div>
     </div>
+
+  </div>
+</div>
+
   </footer>
 
 <script>
