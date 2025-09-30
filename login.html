@@ -90,15 +90,15 @@
       <!-- البريد -->
       <div>
         <label class="block text-sm text-black mb-1 dark:text-white">البريد الإلكتروني</label>
-        <input type="email" placeholder="example@email.com"
-          class="w-full px-4 py-3 rounded-full bg-gray-100 border border-gray-200 focus:outline-none focus:ring-2 focus:ring-blue-600"/>
+        <input type="email" placeholder="example@email.com" class="w-full px-4 py-3 rounded-full bg-gray-100 border border-gray-200 focus:outline-none focus:ring-2 focus:ring-blue-600"/>
+        <span class="text-red-500 text-xs hidden" id="email-error">يرجى إدخال البريد الإلكتروني</span>
       </div>
 
       <!-- كلمة المرور -->
       <div class="relative">
         <label class="block text-sm text-black mb-1 dark:text-white">كلمة المرور</label>
-        <input id="login-password" type="password" placeholder="Abc_123"
-          class="w-full px-4 py-3 pr-12 rounded-full bg-gray-100 border border-gray-200 focus:outline-none focus:ring-2 focus:ring-blue-600"/>
+        <input id="login-password" type="password" placeholder="Abc_123" class="w-full px-4 py-3 pr-12 rounded-full bg-gray-100 border border-gray-200 focus:outline-none focus:ring-2 focus:ring-blue-600"/>
+        <span class="text-red-500 text-xs hidden" id="password-error">يرجى إدخال كلمة المرور</span>
         <!-- زر إظهار/إخفاء -->
         <button type="button" id="toggle-pass"
           class="absolute right-2 top-[34px] h-8 w-8 rounded-full bg-white border border-gray-200 flex items-center justify-center text-xs">
@@ -117,10 +117,9 @@
 
       <!-- زر الدخول (بالوسط وبعرض صغير) -->
       <div class="flex justify-center">
-        <button type="submit"
-          class="px-8 py-3 rounded-full bg-blue-700 text-white font-semibold hover:bg-blue-800 transition">
+        <a href="index.html" type="submit" class="px-8 py-3 rounded-full bg-blue-700 text-white font-semibold hover:bg-blue-800 transition">
           تسجيل الدخول
-        </button>
+        </a>
       </div>
 
       <!-- فاصل -->
@@ -151,18 +150,78 @@
     </form>
   </div>
 
-  <!-- سكربت بسيط لزر إظهار/إخفاء كلمة المرور -->
-  <script>
-    (function () {
-      const btn = document.getElementById('toggle-pass');
-      const input = document.getElementById('login-password');
-      if (btn && input) {
-        btn.addEventListener('click', () => {
-          input.type = input.type === 'password' ? 'text' : 'password';
-        });
+  <!-- سكربت إظهار/إخفاء كلمة المرور -->
+<script>
+  (function () {
+    const btn = document.getElementById('toggle-pass');
+    const input = document.getElementById('login-password');
+    if (btn && input) {
+      btn.addEventListener('click', () => {
+        input.type = input.type === 'password' ? 'text' : 'password';
+      });
+    }
+  })();
+</script>
+
+<!-- سكربت التحقق من الحقول -->
+<script>
+  document.addEventListener("DOMContentLoaded", () => {
+    const form = document.querySelector("form");
+    const emailInput = form.querySelector("input[type='email']");
+    const passwordInput = document.getElementById("login-password");
+    const emailError = document.getElementById("email-error");
+    const passwordError = document.getElementById("password-error");
+
+    function isValidEmail(email) {
+      const regex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+      return regex.test(email);
+    }
+
+    // التحقق عند الإرسال
+    form.addEventListener("submit", function (e) {
+      let valid = true;
+
+      if (emailInput.value.trim() === "") {
+        emailError.textContent = "يرجى إدخال البريد الإلكتروني";
+        emailError.classList.remove("hidden");
+        valid = false;
+      } else if (!isValidEmail(emailInput.value.trim())) {
+        emailError.textContent = "صيغة البريد الإلكتروني غير صحيحة";
+        emailError.classList.remove("hidden");
+        valid = false;
+      } else {
+        emailError.classList.add("hidden");
       }
-    })();
-  </script>
+
+      if (passwordInput.value.trim() === "") {
+        passwordError.textContent = "يرجى إدخال كلمة المرور";
+        passwordError.classList.remove("hidden");
+        valid = false;
+      } else {
+        passwordError.classList.add("hidden");
+      }
+
+      if (!valid) {
+        e.preventDefault();
+      }
+    });
+
+    // التحقق عند الكتابة (إخفاء التحذير إذا المستخدم بدأ يكتب)
+    emailInput.addEventListener("input", () => {
+      if (emailInput.value.trim() !== "") {
+        emailError.classList.add("hidden");
+      }
+    });
+
+    passwordInput.addEventListener("input", () => {
+      if (passwordInput.value.trim() !== "") {
+        passwordError.classList.add("hidden");
+      }
+    });
+  });
+</script>
+
+
 </main>
 
   <!-- Footer -->
