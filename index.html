@@ -24,7 +24,7 @@
 <!-- Navbar -->
 <nav class="py-4 shadow-sm dark:shadow-gray-700 dark:bg-black dark:text-gray-300">
   <div class="container mx-auto flex justify-between items-center px-6">
-    <div class="flex items-center space-x-2">
+    <div class="flex items-center space-x-2 space-x-reverse">
       <div class="w-6 h-6 rounded-full bg-gradient-to-b from-blue-500 to-green-500"></div>
       <span class="text-sm font-medium text-blue-700 dark:text-blue-700">Unicorn <span class="text-teal-600 dark:text-teal-600">VC</span></span>
     </div>
@@ -55,23 +55,38 @@
     <button onclick="toggleMenu()" class="md:hidden text-2xl text-gray-700 dark:text-gray-300">☰</button>
   </div>
 
-  <div id="nav-links" class="hidden flex-col items-right space-y-4 mt-4 pb-4 md:hidden bg-gray-50 dark:bg-black shadow rounded-lg mx-4 transition-colors duration-500">
-    <a href="index.html" class="text-sm font-medium text-blue-600 dark:text-blue-400">الرئيسية</a>
-    <a href="aboutus.html" class="text-sm font-medium text-gray-700 dark:text-gray-300 hover:text-blue-600 dark:hover:text-blue-400">عننا</a>
-    <a href="#Pricing" class="text-sm font-medium text-gray-700 dark:text-gray-300 hover:text-blue-600 dark:hover:text-blue-400">الاسعار</a>
-    <a href="#" class="text-sm font-medium text-gray-700 dark:text-gray-300 hover:text-blue-600 dark:hover:text-blue-400">تواصل بنا</a>
+  <div id="nav-links" 
+     class="hidden flex-col items-start space-y-2 mt-2 pb-2 md:hidden bg-gray-50 dark:bg-black shadow rounded-lg mx-4 transition-colors duration-500">
+  
+  <a href="index.html" class="text-sm font-medium text-blue-600 dark:text-blue-400">الرئيسية</a>
+  <a href="aboutus.html" class="text-sm font-medium text-gray-700 dark:text-gray-300 hover:text-blue-600 dark:hover:text-blue-400">عننا</a>
+  <a href="#Pricing" class="text-sm font-medium text-gray-700 dark:text-gray-300 hover:text-blue-600 dark:hover:text-blue-400">الاسعار</a>
+  <a href="#" class="text-sm font-medium text-gray-700 dark:text-gray-300 hover:text-blue-600 dark:hover:text-blue-400">تواصل بنا</a>
 
-    <button id="dark-mode-btn-mobile" class="w-8 h-8 flex items-center justify-center rounded-full bg-gray-100 dark:bg-gray-800 transition-colors duration-500">
-      <img src="images/sun2.png" alt="Dark Mode" class="w-6 h-6">
+  <div class="flex space-x-2 space-x-reverse">
+    <button id="dark-mode-btn-mobile" 
+            class="w-8 h-8 flex items-center justify-center rounded-full bg-gray-100 dark:bg-gray-800 transition-colors duration-500">
+      <img src="images/sun2.png" alt="Dark Mode" class="w-5 h-5">
     </button>
 
     <button class="w-8 h-8 flex items-center justify-center rounded-full bg-gray-100 transition-colors duration-500">
-      <img src="images/trans2.png" alt="Language" class="w-6 h-6">
+      <img src="images/trans2.png" alt="Language" class="w-5 h-5">
     </button>
-
-    <a href="login.html" class="px-6 py-2 rounded-full bg-teal-600 dark:bg-teal-700 text-white text-sm font-medium hover:bg-teal-700 dark:hover:bg-teal-600 transition-colors duration-500">تسجيل الدخول</a>
-    <a href="signin.html" class="px-6 py-2 rounded-full bg-blue-700 dark:bg-blue-800 text-white text-sm font-medium hover:bg-blue-800 dark:hover:bg-blue-700 transition-colors duration-500">ابدا الان</a>
   </div>
+
+  <div class="flex space-x-2 space-x-reverse">
+    <a href="login.html" 
+       class="px-3 py-1 rounded-full bg-teal-600 dark:bg-teal-700 text-white text-xs font-medium hover:bg-teal-700 dark:hover:bg-teal-600 transition-colors duration-500">
+       تسجيل الدخول
+    </a>
+
+    <a href="signin.html" 
+       class="px-3 py-1 rounded-full bg-blue-700 dark:bg-blue-800 text-white text-xs font-medium hover:bg-blue-800 dark:hover:bg-blue-700 transition-colors duration-500">
+       ابدا الان
+    </a>
+  </div>
+</div>
+
 </nav>
 
 <main class="flex-grow dark:bg-black dark:text-gray-300">
@@ -88,14 +103,19 @@
         <p class="mt-4 text-xm text-gray-200 hero-animate">
          تواصل مع رواد الأعمال الطموحين أو اكتشف فرصًا استثمارية واعدة - كل ذلك عبر منصة رقمية ذكية وآمنة وشفافة.
         </p>
-        <div class="flex flex-col md:flex-row gap-4 mt-6 hero-animate">
-  <a href="#" class="flex items-center gap-2 bg-blue-800 text-white px-4 py-2 rounded-lg shadow hover:bg-gray-300 hover:text-blue-800 text-sm font-medium transition-colors duration-500">
-    <span class="material-icons">apple</span> تحميل لنظام IOS
+        <div class="flex flex-col md:flex-row gap-2 mt-6 hero-animate">
+  <a href="#"
+     class="inline-flex items-center gap-1 bg-blue-800 text-white rounded-md shadow hover:bg-gray-300 hover:text-blue-800 text-sm font-medium px-2 py-1 w-max md:w-auto">
+    <span class="material-icons text-sm">apple</span> تحميل لنظام IOS
   </a>
-  <a href="#" class="flex items-center gap-2 bg-blue-800 text-white px-4 py-2 rounded-lg shadow hover:bg-gray-300 hover:text-blue-800 text-sm font-medium transition-colors duration-500">
-    <span class="material-icons">android</span> تحميل لنظام الاندرويد
+
+  <a href="#"
+     class="inline-flex items-center gap-1 bg-blue-800 text-white rounded-md shadow hover:bg-gray-300 hover:text-blue-800 text-sm font-medium px-2 py-1 w-max md:w-auto">
+    <span class="material-icons text-sm">android</span> تحميل لنظام الاندرويد
   </a>
 </div>
+
+
       </div>
     </div>
   </section>
@@ -259,7 +279,7 @@
       
       <!-- Logo -->
       <div>
-        <div class="flex items-center space-x-2 mb-4">
+        <div class="flex items-center space-x-3 space-x-reverse mb-4">
           <div class="w-6 h-6 rounded-full bg-gradient-to-b from-blue-500 to-green-500"></div>
           <span class="font-medium">Unicorn <span class="text-gray-500">VC</span></span>
         </div>
@@ -268,12 +288,12 @@
       <!-- Contact Us -->
       <div>
         <h3 class="font-semibold mb-2 font-bold text-gray-900 dark:text-gray-100 dark:font-bold">تواصل بنا</h3>
-        <p class="flex items-start space-x-2 mb-2">
-          <img src="images/location.png" alt="Location" class="w-6 h-6 mt-1 bg-gray-100 rounded-full">
+        <p class="flex items-start space-x-3 space-x-reversemb-2">
+          <img src="images/location.png" alt="Location" class="w-5 h-5 mt-1 bg-gray-100 rounded-full">
           <span>Wisconsin Ave, Suite 700<br>Chevy Chase, Maryland 20815</span>
         </p>
-        <p class="flex items-center space-x-2">
-          <img src="images/email.png" alt="Email" class="w-6 h-5 bg-gray-100 ">
+        <p class="flex items-center space-x-3 space-x-reverse">
+          <img src="images/email.png" alt="Email" class="w-4 h-3 bg-gray-100 ">
           <a href="mailto:support@unicornvc.com" class="hover:underline">support@unicornvc.com</a>
         </p>
       </div>
@@ -305,8 +325,8 @@
     </div>
 
 <!-- Bottom Bar -->
-<div class="border-t border-gray-300 bg-white">
-  <div class="max-w-6xl mx-auto px-6 py-4 flex flex-col md:flex-row justify-between items-center text-xs text-gray-700 space-y-4 md:space-y-0">
+<div class="border-t border-gray-300 bg-white dark:bg-black">
+  <div class="max-w-6xl mx-auto px-6 py-4 flex flex-col md:flex-row justify-between items-center text-xs text-gray-700 space-y-4 md:space-y-0 dark:text-white">
     
     <!-- Left -->
     <p>© 2025 Unicorn VC, All rights reserved.</p>
