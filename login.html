@@ -117,9 +117,9 @@
 
       <!-- زر الدخول (بالوسط وبعرض صغير) -->
       <div class="flex justify-center">
-        <a href="index.html" type="submit" class="px-8 py-3 rounded-full bg-blue-700 text-white font-semibold hover:bg-blue-800 transition">
+        <button type="submit" class="px-8 py-3 rounded-full bg-blue-700 text-white font-semibold hover:bg-blue-800 transition">
           تسجيل الدخول
-        </a>
+        </button>
       </div>
 
       <!-- فاصل -->
@@ -179,32 +179,34 @@
 
     // التحقق عند الإرسال
     form.addEventListener("submit", function (e) {
-      let valid = true;
+  e.preventDefault(); // منع الإرسال الافتراضي دائمًا
+  let valid = true;
 
-      if (emailInput.value.trim() === "") {
-        emailError.textContent = "يرجى إدخال البريد الإلكتروني";
-        emailError.classList.remove("hidden");
-        valid = false;
-      } else if (!isValidEmail(emailInput.value.trim())) {
-        emailError.textContent = "صيغة البريد الإلكتروني غير صحيحة";
-        emailError.classList.remove("hidden");
-        valid = false;
-      } else {
-        emailError.classList.add("hidden");
-      }
+  if (emailInput.value.trim() === "") {
+    emailError.textContent = "يرجى إدخال البريد الإلكتروني";
+    emailError.classList.remove("hidden");
+    valid = false;
+  } else if (!isValidEmail(emailInput.value.trim())) {
+    emailError.textContent = "صيغة البريد الإلكتروني غير صحيحة";
+    emailError.classList.remove("hidden");
+    valid = false;
+  } else {
+    emailError.classList.add("hidden");
+  }
 
-      if (passwordInput.value.trim() === "") {
-        passwordError.textContent = "يرجى إدخال كلمة المرور";
-        passwordError.classList.remove("hidden");
-        valid = false;
-      } else {
-        passwordError.classList.add("hidden");
-      }
+  if (passwordInput.value.trim() === "") {
+    passwordError.textContent = "يرجى إدخال كلمة المرور";
+    passwordError.classList.remove("hidden");
+    valid = false;
+  } else {
+    passwordError.classList.add("hidden");
+  }
 
-      if (!valid) {
-        e.preventDefault();
-      }
-    });
+  // ✅ إذا كان الإدخال صحيح، يتم التحويل
+  if (valid) {
+    window.location.href = "index.html";
+  }
+});
 
     // التحقق عند الكتابة (إخفاء التحذير إذا المستخدم بدأ يكتب)
     emailInput.addEventListener("input", () => {
