@@ -10,27 +10,40 @@
       darkMode: 'class'
     }
   </script>
-  <style>
-    .hero-animate { transform: translateY(20px); }
-    .hover-scale:hover { transform: scale(1.05); transition: transform 0.3s ease; }
-    .hover-bounce:hover { animation: bounce 0.6s; }
-    @keyframes bounce { 0%,100% { transform: translateY(0); } 50% { transform: translateY(-8px); } }
-    .why-us-img { transition: transform 0.3s ease, box-shadow 0.3s ease; }
-    .why-us-img:hover { transform: translateY(-8px) scale(1.05); box-shadow: 0 10px 20px rgba(0,0,0,0.2); }
-  </style>
+<style>
+  .hero-animate { transform: translateY(20px); opacity: 0; transition: all 0.3s ease; }
+  .hero-animate.visible { transform: translateY(0); opacity: 1; }
+
+  .hover-scale:hover { transform: scale(1.05); transition: transform 0.3s ease; }
+  .hover-bounce:hover { animation: bounce 0.6s; }
+  @keyframes bounce { 0%,100% { transform: translateY(0); } 50% { transform: translateY(-8px); } }
+
+  .why-us-img { transition: transform 0.3s ease, box-shadow 0.3s ease; }
+  .why-us-img:hover { transform: translateY(-8px) scale(1.05); box-shadow: 0 10px 20px rgba(0,0,0,0.2); }
+
+  main { visibility: hidden; }
+ /* تحريك صورة الهيرو عند المرور على القسم */
+.hero-section:hover .hero-section-img {
+  transform: translateY(-8px) scale(1.05);
+  transition: transform 0.3s ease;
+}
+</style>
+
 </head>
 <body class="bg-white dark:bg-black text-gray-700 dark:text-gray-300 min-h-screen flex flex-col">
 
 <!-- Navbar -->
 <div id="header-placeholder"></div>
 
-<main class="flex-grow dark:bg-black dark:text-gray-300">
+ <div id="landing-placeholder"></div>
+
+<main class="pt-16 dark:bg-black dark:text-gray-300">
 
   <!-- Hero Section -->
-  <section class="relative rounded-2xl m-6 overflow-hidden min-h-screen md:min-h-[80vh] lg:min-h-[70vh] dark:bg-black dark:text-gray-300">
-    <img src="images/hands.jpg" alt="Background" class="absolute inset-0 w-full h-full object-cover" />
-    <div class="absolute inset-0 bg-black/50"></div>
-    <div class="relative flex flex-col md:flex-row items-center justify-between pt-40 m-6">
+  <section class="hero-animate relative rounded-2xl m-6 overflow-hidden min-h-screen md:min-h-[80vh] lg:min-h-[70vh] dark:bg-black dark:text-gray-300 hero-section">
+  <img src="images/hands.jpg" alt="Background" class="absolute inset-0 w-full h-full object-cover hero-section-img" />
+  <div class="absolute inset-0 bg-black/50"></div>
+  <div class="relative flex flex-col md:flex-row items-center justify-between pt-40 m-6">
       <div class="text-white max-w-lg space-y-8">
         <h1 class="text-3xl md:text-4xl font-bold leading-snug hero-animate">
           تمكين الاستثمار، وتغذية الابتكار
@@ -43,15 +56,13 @@
 
 <div class="flex flex-col md:flex-row gap-2 mt-6 hero-animate">
   <!-- زر تحميل IOS -->
-  <a href="#" class="inline-flex items-center gap-2 bg-blue-800 text-white rounded-md shadow hover:bg-gray-300 hover:text-blue-800 text-sm font-medium px-3 py-2 w-max md:w-auto">
-    <i class="fa-brands fa-apple text-lg"></i>
-    تحميل لنظام IOS
+  <a href="login.html" class="inline-flex items-center gap-2 bg-blue-800 text-white rounded-md hover:bg-gray-300 hover:text-blue-800 text-sm font-medium px-3 py-2 w-max md:w-auto">
+    كن مستثمرا
   </a>
 
   <!-- زر تحميل Android -->
-  <a href="#" class="inline-flex items-center gap-2 bg-blue-800 text-white rounded-md shadow hover:bg-gray-300 hover:text-blue-800 text-sm font-medium px-3 py-2 w-max md:w-auto">
-    <i class="fa-brands fa-android text-lg"></i>
-    تحميل لنظام الأندرويد
+  <a href="login.html" class="inline-flex items-center gap-2 bg-blue-800 text-white rounded-md hover:bg-gray-300 hover:text-blue-800 text-sm font-medium px-3 py-2 w-max md:w-auto">
+    كن رائد اعمال
   </a>
 </div>
 
@@ -67,27 +78,27 @@
     <p class="text-gray-500 dark:text-gray-400 mb-12">لماذا اخترت Unicorn VC...?</p>
     <div class="grid grid-cols-1 md:grid-cols-5 gap-10 max-w-6xl mx-auto">
       <div class="hover-scale">
-        <img src="images/safty.jpg" class="mx-auto mb-4 w-24 h-24 object-cover rounded-full border border-gray-300 dark:border-gray-600"/>
+        <img src="images/safty.jpg" class="hero-animate mx-auto mb-4 w-24 h-24 object-cover rounded-full border border-gray-300 dark:border-gray-600"/>
         <h3 class="font-semibold">الأمن والشفافية</h3>
         <p class="text-sm text-gray-500 dark:text-gray-400 mt-2">التحقق من هوية المستخدمين، والتحقق من الوثائق القانونية، وقنوات الاتصال الآمنة.</p>
       </div>
       <div class="hover-scale">
-        <img src="images/hand.jpg" class="mx-auto mb-4 w-24 h-24 object-cover rounded-full border border-gray-300 dark:border-gray-600"/>
+        <img src="images/hand.jpg" class="hero-animate mx-auto mb-4 w-24 h-24 object-cover rounded-full border border-gray-300 dark:border-gray-600"/>
         <h3 class="font-semibold">المطابقة الذكية</h3>
         <p class="text-sm text-gray-500 dark:text-gray-400 mt-2">خوارزميات ذكية تُطابق المستثمرين المناسبين مع المشاريع المناسبة</p>
       </div>
       <div class="hover-scale">
-        <img src="images/tool.jpg" class="mx-auto mb-4 w-24 h-24 object-cover rounded-full border border-gray-300 dark:border-gray-600"/>
+        <img src="images/tool.jpg" class="hero-animate mx-auto mb-4 w-24 h-24 object-cover rounded-full border border-gray-300 dark:border-gray-600"/>
         <h3 class="font-semibold">أدوات الدعم</h3>
         <p class="text-sm text-gray-500 dark:text-gray-400 mt-2">قوالب المشاريع، ومراجعات الخبراء، وأنظمة التقييم المدمجة</p>
       </div>
       <div class="hover-scale">
-        <img src="images/lamp.jpg" class="mx-auto mb-4 w-24 h-24 object-cover rounded-full border border-gray-300 dark:border-gray-600"/>
+        <img src="images/lamp.jpg" class="hero-animate mx-auto mb-4 w-24 h-24 object-cover rounded-full border border-gray-300 dark:border-gray-600"/>
         <h3 class="font-semibold">التعاون المباشر</h3>
         <p class="text-sm text-gray-500 dark:text-gray-400 mt-2">شركات ناشئة جاهزة للاستثمار في مختلف القطاعات</p>
       </div>
       <div class="hover-scale">
-        <img src="images/call.jpg" class="mx-auto mb-4 w-24 h-24 object-cover rounded-full border border-gray-300 dark:border-gray-600"/>
+        <img src="images/call.jpg" class="hero-animate mx-auto mb-4 w-24 h-24 object-cover rounded-full border border-gray-300 dark:border-gray-600"/>
         <h3 class="font-semibold">الوصول إلى مشاريع عالية الجودة</h3>
         <p class="text-sm text-gray-500 dark:text-gray-400 mt-2">تواصل بدون وسطاء - سريع، بسيط، وفعال</p>
       </div>
@@ -95,13 +106,13 @@
   </section>
 
   <!-- Our Services Section -->
-  <section class="py-16 bg-gray-100 dark:bg-black hero-animate">
+  <section id="service" class="py-16 bg-gray-100 dark:bg-black hero-animate">
     <div class="container mx-auto px-4">
       <h2 class="text-3xl font-bold mb-2 text-center dark:text-gray-200 text-black">خدماتنا</h2>
       <p class="text-gray-600 dark:text-gray-300 mb-12 text-sm md:text-base text-center">ماذا نقدم....؟</p>
       <div class="grid grid-cols-1 lg:grid-cols-2 gap-8 px-4">
         <!-- Service Card 1 -->
-        <div class="relative rounded-[1.5rem] overflow-hidden shadow-lg group">
+        <div class="hero-animate relative rounded-[1.5rem] overflow-hidden shadow-lg group">
           <img src="images/team.jpg" alt="For Entrepreneurs" class="w-full h-full object-cover transition-transform duration-300 group-hover:scale-105">
           <div class="absolute inset-0 bg-black bg-opacity-50 dark:bg-opacity-60 flex flex-col justify-end p-8 text-white text-right">
             <h3 class="text-2xl font-bold mb-2">للمستثمرين:</h3>
@@ -110,7 +121,7 @@
           </div>
         </div>
         <!-- Service Card 2 -->
-        <div class="relative rounded-[1.5rem] overflow-hidden shadow-lg group">
+        <div class="hero-animate relative rounded-[1.5rem] overflow-hidden shadow-lg group">
           <img src="images/lab.jpg" alt="For Investors" class="w-full h-full object-cover transition-transform duration-300 group-hover:scale-105">
           <div class="absolute inset-0 bg-black bg-opacity-50 dark:bg-opacity-60 flex flex-col justify-end p-8 text-white text-right">
             <h3 class="text-2xl font-bold mb-2">لأصحاب المشاريع:</h3>
@@ -134,7 +145,7 @@
 
             <!-- Basic, Pro, Enterprise Plans (كرر نفس الأسلوب مع dark: classes لكل بطاقة) -->
       <!-- Basic Plan -->
-      <div class="bg-gray-100 dark:bg-black border border-black dark:border-gray-700 rounded-2xl p-8 shadow-lg flex flex-col justify-between relative hover-scale hover:bg-gray-300 dark:hover:bg-gray-900">
+      <div class="hero-animate bg-gray-100 dark:bg-black border border-black dark:border-gray-700 rounded-2xl p-8 shadow-lg flex flex-col justify-between relative hover:bg-gray-300 dark:hover:bg-gray-900 hover-scale">
         <div>
           <div class="flex items-center justify-between mb-2">
             <h3 class="text-[40px] font-bold font-semibold dark:text-gray-200 text-black">اساسي</h3>
@@ -154,7 +165,7 @@
       </div>
 
       <!-- Free Plan -->
-      <div class="bg-gray-100 dark:bg-black border border-black dark:border-gray-700 rounded-2xl p-8 shadow-md flex flex-col justify-between hover:shadow-lg transition hover-scale hover:bg-gray-300 dark:hover:bg-gray-900">
+      <div class="hero-animate bg-gray-100 dark:bg-black border border-black dark:border-gray-700 rounded-2xl p-8 shadow-md flex flex-col justify-between hover:shadow-lg transition hover-scale hover:bg-gray-300 dark:hover:bg-gray-900">
         <div>
           <h3 class="text-[40px] font-semibold font-bold mb-3 dark:text-gray-200 text-black">خطة مجانية</h3>
           <p class="text-[70px] font-bold mb-2 dark:text-gray-200 text-black">$0 <span class="text-base font-normal dark:text-gray-300">/شهر</span></p>
@@ -170,7 +181,7 @@
       </div>
 
       <!-- Pro Plan -->
-      <div class="bg-gray-100 dark:bg-black border border-black dark:border-gray-700 rounded-2xl p-8 shadow-md flex flex-col justify-between hover-scale hover:bg-gray-300 dark:hover:bg-gray-900">
+      <div class="hero-animate bg-gray-100 dark:bg-black border border-black dark:border-gray-700 rounded-2xl p-8 shadow-md flex flex-col justify-between hover-scale hover:bg-gray-300 dark:hover:bg-gray-900">
         <div>
           <h3 class="text-[40px] font-bold font-semibold dark:text-gray-200 mb-3 text-black">احترافي</h3>
           <p class="text-[60px] font-bold mb-2 dark:text-gray-200 text-black">$149 <span class="text-base font-normal dark:text-gray-300">/شهر</span></p>
@@ -188,7 +199,7 @@
       </div>
 
       <!-- Enterprise Plan -->
-      <div class="bg-gray-100 dark:bg-black border border-black dark:border-gray-700 rounded-2xl p-8 shadow-md flex flex-col justify-between hover-scale hover:bg-gray-300 dark:hover:bg-gray-900">
+      <div class="hero-animate bg-gray-100 dark:bg-black border border-black dark:border-gray-700 rounded-2xl p-8 shadow-md flex flex-col justify-between hover-scale hover:bg-gray-300 dark:hover:bg-gray-900">
         <div>
           <h3 class="text-[40px] font-bold font-semibold dark:text-gray-200 mb-3 text-black">الباقة المؤسسية</h3>
           <h1 class="text-[20px] font-semibold dark:text-gray-200 mb-3 text-black">يتم تحديد ذلك عن طريق الاتصال بالدعم.</h1>
@@ -213,54 +224,158 @@
   <!-- Footer -->
    <div id="footer-placeholder"></div>
 
-   <script>
-  // تحميل الهيدر والفوتر
-  fetch('header.html')
-    .then(res => res.text())
-    .then(data => {
-      document.getElementById('header-placeholder').innerHTML = data;
-      
-      // بعد تحميل الهيدر: إعداد أزرار الوضع الداكن والقائمة المتحركة
-      setupHeaderJS();
-    });
+<script>
+  function loadPage() {
+    // تحميل الهيدر
+    fetch('header.html')
+      .then(res => res.text())
+      .then(headerHTML => {
+        document.getElementById('header-placeholder').innerHTML = headerHTML;
+        setupHeaderJS(); // تفعيل وظائف الهيدر بعد إدخال الـ HTML
+      })
+      .then(() => {
+        // تحميل اللاندينق
+        return fetch('landing.html').then(res => res.text());
+      })
+      .then(landingHTML => {
+        const landingDiv = document.getElementById('landing-placeholder');
+        landingDiv.innerHTML = landingHTML;
 
-  fetch('footer.html')
-    .then(res => res.text())
-    .then(data => document.getElementById('footer-placeholder').innerHTML = data);
+        const loader = landingDiv.querySelector(".shadow");
+        const mainContent = document.querySelector("main");
 
+        if (loader) {
+          // إظهار اللاندينق فورًا
+          loader.classList.remove("hidden");
+
+          // إخفاء الصفحة مؤقتًا أثناء اللاندينق
+          if (mainContent) mainContent.style.visibility = "hidden";
+
+          // بعد 2 ثواني: إزالة اللاندينق فورًا بدون أي تأخير بصري
+          setTimeout(() => {
+            // نخفي اللاندينق مباشرة بدون تأثير بطيء
+            landingDiv.style.display = "none";
+            landingDiv.innerHTML = "";
+            document.body.style.backgroundColor = "white";
+
+            // إظهار المحتوى فورًا
+            if (mainContent) mainContent.style.visibility = "visible";
+          }, 2000);
+        }
+      })
+      .then(() => {
+        // تحميل الفوتر
+        return fetch('footer.html').then(res => res.text());
+      })
+      .then(footerHTML => {
+        document.getElementById('footer-placeholder').innerHTML = footerHTML;
+      })
+      .catch(err => console.error('Error loading files:', err));
+  }
+
+  // إعداد الهيدر
   function setupHeaderJS() {
-    // Navbar Mobile Menu
+    // زر فتح القائمة (الموجود في header.html)
     const toggleBtn = document.querySelector('[onclick="toggleMenu()"]');
     const menu = document.getElementById("nav-links");
-    toggleBtn.addEventListener('click', () => {
-      menu.classList.toggle("hidden");
-      menu.classList.toggle("flex");
+    if (toggleBtn && menu) {
+      toggleBtn.addEventListener('click', () => {
+        menu.classList.toggle("hidden");
+        menu.classList.toggle("flex");
+      });
+    }
+
+    // ---------- إعداد الوضع الداكن للزر الجديد ----------
+    // متوقع أن الـ header.html يحتوي على عناصر الزر الجديدة بالمعرّفات:
+    // desktop checkbox id="dark-mode-checkbox"
+    // mobile  checkbox id="dark-mode-checkbox-mobile"
+    const desktopToggle = document.getElementById('dark-mode-checkbox');
+    const mobileToggle = document.getElementById('dark-mode-checkbox-mobile');
+
+    // دالة لتطبيق الوضع الداكن/الفاتح ومزامنة الحالات
+    function applyDarkMode(enabled) {
+      // نستخدم documentElement + body لخيار أوسع لتوافق Tailwind
+      document.documentElement.classList.toggle('dark', enabled);
+      document.body.classList.toggle('dark', enabled);
+
+      // مزامنة حالات الشيك بوكس
+      if (desktopToggle) desktopToggle.checked = enabled;
+      if (mobileToggle) mobileToggle.checked = enabled;
+
+      // حفظ الحالة
+      localStorage.setItem('darkMode', enabled ? 'enabled' : 'disabled');
+
+      // انتقال لطيف عند التبديل
+      document.body.style.transition = 'background-color 0.35s ease, color 0.35s ease';
+    }
+
+    // إضافة مستمعي الأحداث إن وُجدت الشيك بوكسات
+    [desktopToggle, mobileToggle].forEach(toggle => {
+      if (toggle) {
+        toggle.addEventListener('change', (e) => {
+          applyDarkMode(!!e.target.checked);
+        });
+      }
     });
 
-    // Dark Mode toggle
-    function setupDarkMode(btnId) {
-      const darkBtn = document.getElementById(btnId);
-      darkBtn.addEventListener('click', () => {
-        document.body.classList.toggle('dark');
-        const isDark = document.body.classList.contains('dark');
-        const img = darkBtn.querySelector('img');
-        img.src = isDark ? 'images/moon2.png' : 'images/sun2.png';
-        localStorage.setItem('darkMode', isDark ? 'enabled' : 'disabled');
+    // لو المستخدم كان يستخدم الزر القديم (صور sun/moon) ونفّذت الترقية
+    // نحاول أيضاً دعم وجود الأزرار القديمة كي لا يحدث خطأ
+    const oldDesktopBtn = document.getElementById('dark-mode-btn');
+    const oldMobileBtn = document.getElementById('dark-mode-btn-mobile');
+    if (oldDesktopBtn) {
+      oldDesktopBtn.addEventListener('click', () => {
+        const newState = !document.body.classList.contains('dark');
+        applyDarkMode(newState);
+      });
+    }
+    if (oldMobileBtn) {
+      oldMobileBtn.addEventListener('click', () => {
+        const newState = !document.body.classList.contains('dark');
+        applyDarkMode(newState);
       });
     }
 
-    setupDarkMode('dark-mode-btn');
-    setupDarkMode('dark-mode-btn-mobile');
-
-    // تحقق من الوضع الداكن عند تحميل الصفحة
-    if(localStorage.getItem('darkMode') === 'enabled') {
-      document.body.classList.add('dark');
-      document.querySelectorAll('#dark-mode-btn img, #dark-mode-btn-mobile img').forEach(img => {
-        img.src = 'images/moon2.png';
-      });
+    // تهيئة الحالة عند التحميل اعتمادًا على التخزين المحلي
+    if (localStorage.getItem('darkMode') === 'enabled') {
+      applyDarkMode(true);
+    } else {
+      applyDarkMode(false);
     }
+    // ---------- نهاية إعداد الوضع الداكن ----------
   }
+
+  window.addEventListener('DOMContentLoaded', loadPage);
 </script>
+
+<script>
+window.addEventListener('load', () => {
+  const main = document.querySelector('main');
+  if (main) main.style.visibility = 'visible';
+
+  const animatedElements = Array.from(document.querySelectorAll('.hero-animate'));
+
+  const observer = new IntersectionObserver((entries) => {
+    entries.forEach((entry) => {
+      if (entry.isIntersecting) {
+        // تأخير ديناميكي بالنسبة لترتيب العنصر بين العناصر المرئية
+        let visibleSiblings = animatedElements.filter(el => {
+          const rect = el.getBoundingClientRect();
+          return rect.top < window.innerHeight && rect.bottom > 0;
+        });
+        const index = visibleSiblings.indexOf(entry.target);
+        entry.target.style.transitionDelay = `${index * 0.15}s`;
+        entry.target.classList.add('visible');
+      } else {
+        entry.target.classList.remove('visible');
+        entry.target.style.transitionDelay = '0s';
+      }
+    });
+  }, { threshold: 0.15 });
+
+  animatedElements.forEach(el => observer.observe(el));
+});
+</script>
+
 
 </body>
 </html>
