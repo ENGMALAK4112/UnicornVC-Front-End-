@@ -135,6 +135,83 @@
 
 
 </main>
+<!-- زر المحادثة + نافذة المحادثة -->
+<div id="chat-widget" class="fixed bottom-6 right-6 z-[9999]">
+  <!-- زر المحادثة -->
+  <button id="chat-toggle"
+    class="w-14 h-14 rounded-full bg-gradient-to-br from-blue-400 to-blue-700 shadow-lg flex items-center justify-center text-white text-2xl transition-transform hover:scale-110">
+    💬
+  </button>
+
+  <!-- نافذة المحادثة -->
+  <div id="chat-box"
+    class="hidden absolute bottom-20 right-0 w-80 bg-white dark:bg-gray-800 rounded-2xl shadow-2xl overflow-hidden transition-all duration-500">
+    <!-- رأس المحادثة -->
+    <div class="bg-gradient-to-br from-blue-500 to-blue-700 text-white px-4 py-3 flex items-center gap-3">
+      <div
+        class="w-10 h-10 bg-white/20 rounded-full flex items-center justify-center text-lg font-bold border border-white/30">
+        خ
+      </div>
+      <div>
+        <h2 class="font-semibold text-sm">خدمة العملاء</h2>
+        <p class="text-xs text-white/80">نرد عادة خلال 24 ساعة او اقل<br> فضلا ضع بريدك الإلكتروني في بداية الرسلة</p>
+      </div>
+    </div>
+
+    <!-- محتوى الرسائل -->
+    <div class="p-3 h-60 overflow-y-auto space-y-3 bg-gray-50 dark:bg-gray-900">
+      <div class="bg-blue-100 dark:bg-blue-900 text-gray-800 dark:text-gray-100 rounded-xl p-2 text-sm w-fit">
+        مرحبًا 👋 كيف يمكنني مساعدتك اليوم؟
+      </div>
+    </div>
+
+    <!-- إدخال الرسالة -->
+    <div class="p-2 border-t border-gray-200 dark:border-gray-700 flex items-center gap-2 bg-gray-50 dark:bg-gray-900">
+      <input type="text" placeholder="اكتب رسالتك..." 
+             class="flex-1 rounded-full border border-gray-300 dark:border-gray-700 px-3 py-2 text-sm focus:outline-none focus:ring-2 focus:ring-blue-400 bg-white dark:bg-gray-800 text-gray-800 dark:text-gray-100">
+      <button
+        class="bg-blue-600 hover:bg-blue-700 text-white rounded-full p-2 flex items-center justify-center text-sm">
+        ➤
+      </button>
+    </div>
+  </div>
+</div>
+
+<!-- سكربت التبديل -->
+<script>
+  const chatToggle = document.getElementById('chat-toggle');
+  const chatBox = document.getElementById('chat-box');
+  let chatOpen = false;
+
+  chatToggle.addEventListener('click', () => {
+    chatOpen = !chatOpen;
+
+    if (chatOpen) {
+      chatBox.classList.remove('hidden');
+      chatBox.classList.add('animate-[fadeInUp_0.4s_ease-out_forwards]');
+      chatToggle.innerHTML = '❌'; // تغيير الأيقونة عند الفتح
+    } else {
+      chatBox.classList.add('hidden');
+      chatToggle.innerHTML = '💬'; // إعادة الأيقونة عند الإغلاق
+    }
+  });
+</script>
+
+<!-- أنيميشن الظهور -->
+<style>
+  @keyframes fadeInUp {
+    from {
+      opacity: 0;
+      transform: translateY(20px);
+    }
+    to {
+      opacity: 1;
+      transform: translateY(0);
+    }
+  }
+</style>
+
+
 
   <!-- Footer -->
    <div id="footer-placeholder"></div>
