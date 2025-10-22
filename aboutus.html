@@ -5,6 +5,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Unicorn VC</title>
   <script src="https://cdn.tailwindcss.com"></script>
+  <link href="https://fonts.googleapis.com/css2?family=Cairo:wght@400;700&display=swap" rel="stylesheet">
   <script>
     tailwind.config = {
       darkMode: 'class'
@@ -29,32 +30,121 @@
 }
 </style>
 </head>
-<body class="bg-white dark:bg-black text-gray-700 dark:text-gray-300 min-h-screen flex flex-col">
+<body class="font-sans dark:bg-black text-gray-700 dark:text-gray-300 min-h-screen flex flex-col" style="font-family: 'Cairo', sans-serif;">
 
 <!-- Navbar -->
 <div id="header-placeholder"></div>
 
  <div id="landing-placeholder"></div>
 <main class="pt-16 bg-white dark:bg-black dark:text-gray-300 hero-animate">
-    <!-- Hero Section -->
-<section class="relative rounded-2xl m-6 overflow-hidden min-h-screen md:min-h-[80vh] lg:min-h-[70vh] dark:bg-black dark:text-gray-300">
-    <img src="images/share.jpg" alt="Background" class="absolute inset-0 w-full h-full object-cover" />
-  <div class="absolute inset-0 bg-black bg-opacity-50 flex flex-col justify-center items-center text-center text-white p-6">
-    <h1 class="text-2xl md:text-4xl font-bold mb-4 hero-animate">
-      نربط الأفكار بالاستثمار، لنصنع مستقبلًا مشتركًا
-    </h1>
-    <p class="text-sm md:text-lg max-w-2xl mb-6 hero-animate">
-      منصتنا الذكية تربط المستثمرين برواد الأعمال، عبر بيئة آمنة وموثوقة، تبدأ من السعودية نحو العالمية
-    </p>
-    <a href="#vision" class="bg-blue-600 hover:bg-blue-500 text-white font-semibold py-3 px-6 rounded-full transition hover-scale">
-      تعرف اكثر
-    </a>
+
+<!-- Hero Section -->
+<section class="relative min-h-screen flex items-center justify-center bg-white w-full overflow-hidden dark:bg-black dark:text-gray-200 rounded-2xl m-6">
+
+  <!-- خلفية الموجة + الصورة -->
+  <div id="wave-bg" class="absolute inset-0 transition-all duration-[1000ms] ease-in-out origin-right overflow-hidden rounded-full rounded-tr rounded-br"
+       style="width:100%; background: linear-gradient(to right, #7893dd, #4b46d1, #0435a8); clip-path: polygon(0 0, 100% 0, 100% 100%, 0 100%);">
+
+    <img src="images/share.jpg" 
+         id="hero-bg-img"
+         alt="خلفية مصافحة"
+         class="absolute inset-0 w-full h-full object-cover opacity-0 transition-opacity duration-[1000ms] ease-out"
+         style="object-position: center center;">
   </div>
+
+  <!-- النصوص الأولى -->
+  <div id="hero-start" class="absolute inset-0 flex flex-col items-center justify-center text-center z-20 transition-all duration-[400ms] ease-in-out">
+    <h1 class="text-5xl md:text-7xl font-bold mb-4 text-white">Unicorn VC</h1>
+    <p class="text-xl md:text-2xl text-gray-200">نربط الأفكار بالاستثمار</p>
+  </div>
+
+  <!-- النص بعد التحريك -->
+  <div id="hero-end" class="absolute top-0 right-0 z-30 flex flex-col items-end justify-center w-full h-full px-8 md:px-20 opacity-0 transition-all duration-[800ms] ease-in-out">
+    <div class="text-right space-y-6 mt-10 md:mt-0 text-blue-900 max-w-md">
+      <h2 class="text-3xl md:text-5xl font-bold leading-snug">
+        <span id="title-part1" class="block opacity-0 translate-x-10 transition-all duration-500 ease-out">نربط الأفكار</span>
+        <span id="title-part2" class="block opacity-0 translate-x-10 transition-all duration-500 ease-out">بفرص الاستثمار الواعدة</span>
+      </h2>
+      <p id="sub-text" class="text-lg opacity-0 translate-x-10 transition-all duration-500 ease-out text-black dark:text-gray-200">
+        منصتنا الذكية تربط المستثمرين برواد الأعمال عبر بيئة آمنة وشفافة. من السعودية نحو العالمية.
+      </p>
+
+      <!-- الأزرار -->
+      <div id="buttons-group" class="flex flex-row-reverse gap-4 opacity-0 transition-all duration-500 ease-out">
+        <a href="#vision" class="relative group cursor-pointer">
+          <div class="relative px-8 py-4 border-2 border-white text-white bg-blue-600 text-lg rounded-lg transform transition-all duration-300 group-hover:translate-y-1 group-hover:translate-x-1 shadow-[6px_6px_10px_rgba(0,0,0,0.6),-6px_-6px_10px_rgba(255,255,255,0.1)] group-hover:shadow-[8px_8px_15px_rgba(0,0,0,0.8),-8px_-8px_15px_rgba(255,255,255,0.15)]">
+            تعرف أكثر
+          </div>
+          <div class="absolute inset-0 border-2 border-dashed border-blue-500 rounded-lg opacity-50 group-hover:opacity-100 transition-opacity duration-300"></div>
+          <div class="absolute -top-2 -right-2 w-4 h-4 bg-blue-500 rounded-full animate-ping shadow-lg"></div>
+          <div class="absolute -bottom-2 -left-2 w-4 h-4 bg-blue-500 rounded-full animate-ping shadow-lg"></div>
+        </a>
+      </div>
+    </div>
+  </div>
+
+  <!-- سكربت الحركة -->
+  <script>
+  window.addEventListener("load", () => {
+    const wave = document.getElementById("wave-bg");
+    const start = document.getElementById("hero-start");
+    const heroEnd = document.getElementById("hero-end");
+    const bgImg = document.getElementById("hero-bg-img");
+    const titlePart1 = document.getElementById("title-part1");
+    const titlePart2 = document.getElementById("title-part2");
+    const subText = document.getElementById("sub-text");
+    const buttonsGroup = document.getElementById("buttons-group");
+
+    const heroSection = document.querySelector("section.relative");
+
+    function runAnimation() {
+      start.style.opacity = "1";
+      heroEnd.style.opacity = "0";
+      bgImg.style.opacity = "0";
+      [titlePart1, titlePart2, subText, buttonsGroup].forEach(el => {
+        el.style.opacity = "0";
+        el.style.transform = "translateX(40px)";
+      });
+
+      setTimeout(() => {
+        start.style.opacity = "0";
+        wave.style.width = "50%";
+        wave.style.right = "0";
+        wave.style.left = "auto";
+
+        setTimeout(() => {
+          heroEnd.style.opacity = "1";
+          bgImg.style.opacity = "1";
+
+          setTimeout(() => { titlePart1.style.opacity = "1"; titlePart1.style.transform = "translateX(0)"; }, 400);
+          setTimeout(() => { titlePart2.style.opacity = "1"; titlePart2.style.transform = "translateX(0)"; }, 600);
+          setTimeout(() => { subText.style.opacity = "1"; subText.style.transform = "translateX(0)"; }, 800);
+          setTimeout(() => { buttonsGroup.style.opacity = "1"; }, 1000);
+        }, 500);
+      }, 200);
+    }
+
+    const observer = new IntersectionObserver((entries) => {
+      entries.forEach(entry => {
+        if (entry.isIntersecting) {
+          runAnimation();
+        } else {
+          start.style.opacity = "1";
+          heroEnd.style.opacity = "0";
+          bgImg.style.opacity = "0";
+        }
+      });
+    }, { threshold: 0.5 });
+
+    if (heroSection) observer.observe(heroSection);
+  });
+  </script>
 </section>
 
+
   <!-- Vision Section -->
-  <section class="py-16 px-6 md:px-16 bg-gray-100 rounded-xl shadow-sm mx-4 md:mx-12 mb-12 dark:bg-black dark:text-white hero-animate">
-    <h2 class="text-2xl md:text-3xl font-bold text-right mb-6">رؤيتنا</h2>
+  <section class="text-center py-16 px-6 md:px-16 bg-white rounded-xl shadow-sm mx-4 md:mx-12 mb-12 dark:bg-black dark:text-white hero-animate">
+    <h2 class="text-2xl md:text-3xl font-bold mb-6">رؤيتنا</h2>
     <p class="text-gray-700 leading-relaxed mb-4 dark:text-gray-200 hero-animate">
       بدأت فكرتنا عندما لاحظ مدير المشروع غياب منصة إلكترونية عربية تقدم دور الوسيط الاستثماري باحترافية وأمان وشفافية.
  من هنا قررنا بناء منصة ذكية تربط المستثمرين برواد الأعمال، مع الاعتماد على الخبراء والخوارزميات المتقدمة لمراجعة المشاريع وتوصيلها للمستثمر المناسب.<br><br> مع الاعتماد على الخبراء والخوارزميات المتقدمة لمراجعة المشاريع وتوصيلها للمستثمر المناسب.
