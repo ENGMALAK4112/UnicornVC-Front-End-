@@ -245,29 +245,31 @@ form.addEventListener("submit", function (e) {
       const footerPlaceholder = document.getElementById('footer-placeholder');
       const mainContent = document.querySelector('main');
 
-      // 🔹 أولاً: تحميل اللاندينج وتفعيلها كغطاء كامل
+      // 🔹 تحميل اللاندينج أولًا
       const landingHTML = await fetch('landing.html').then(res => res.text());
       landingPlaceholder.innerHTML = landingHTML;
 
       const loader = landingPlaceholder.querySelector(".shadow") || landingPlaceholder.firstElementChild;
       if (loader) {
         loader.classList.remove("hidden");
-        landingPlaceholder.style.position = "fixed";
-        landingPlaceholder.style.top = "0";
-        landingPlaceholder.style.left = "0";
-        landingPlaceholder.style.width = "100%";
-        landingPlaceholder.style.height = "100%";
-        landingPlaceholder.style.zIndex = "9999";
-        landingPlaceholder.style.backgroundColor = "#fff"; // غطاء أبيض كامل
-        landingPlaceholder.style.transition = "opacity 0.6s ease";
+        Object.assign(landingPlaceholder.style, {
+          position: "fixed",
+          top: "0",
+          left: "0",
+          width: "100%",
+          height: "100%",
+          zIndex: "9999",
+          backgroundColor: "#fff",
+          transition: "opacity 0.6s ease"
+        });
       }
 
-      // إخفاء باقي الصفحة مؤقتًا
-      headerPlaceholder.style.visibility = "hidden";
-      if (mainContent) mainContent.style.visibility = "hidden";
-      footerPlaceholder.style.visibility = "hidden";
+      // إخفاء الصفحة مؤقتًا
+      [headerPlaceholder, mainContent, footerPlaceholder].forEach(el => {
+        if (el) el.style.visibility = "hidden";
+      });
 
-      // 🔹 ثانيًا: تحميل باقي الصفحة أثناء عرض اللاندينج
+      // 🔹 تحميل الهيدر والفوتر
       const [headerHTML, footerHTML] = await Promise.all([
         fetch('header.html').then(res => res.text()),
         fetch('footer.html').then(res => res.text())
@@ -275,31 +277,27 @@ form.addEventListener("submit", function (e) {
 
       headerPlaceholder.innerHTML = headerHTML;
       footerPlaceholder.innerHTML = footerHTML;
+
       setupHeaderJS();
 
-      // 🔹 ننتظر تحميل الصور في كل الصفحة
-      const allImages = Array.from(document.images);
-      await Promise.all(
-        allImages.map(img => {
-          if (img.complete) return Promise.resolve();
-          return new Promise(resolve => {
-            img.onload = resolve;
-            img.onerror = resolve;
-          });
-        })
-      );
+      // 🔹 انتظار تحميل الصور
+      await Promise.all(Array.from(document.images).map(img => {
+        if (img.complete) return Promise.resolve();
+        return new Promise(resolve => {
+          img.onload = resolve;
+          img.onerror = resolve;
+        });
+      }));
 
-      // 🔹 بعد تحميل الكل: نخفي اللاندينج تدريجيًا
+      // 🔹 إخفاء اللاندينج تدريجيًا
       landingPlaceholder.style.opacity = "0";
       setTimeout(() => {
         landingPlaceholder.style.display = "none";
         landingPlaceholder.innerHTML = "";
         landingPlaceholder.style.position = "static";
-
-        // نعرض باقي الصفحة
-        headerPlaceholder.style.visibility = "visible";
-        if (mainContent) mainContent.style.visibility = "visible";
-        footerPlaceholder.style.visibility = "visible";
+        [headerPlaceholder, mainContent, footerPlaceholder].forEach(el => {
+          if (el) el.style.visibility = "visible";
+        });
       }, 600);
 
     } catch (err) {
@@ -307,7 +305,7 @@ form.addEventListener("submit", function (e) {
     }
   }
 
-  // 🔧 إعداد الهيدر
+  // 🌓 إعداد الزر الجديد (الشمس والهلال)
   function setupHeaderJS() {
     const toggleBtn = document.querySelector('[onclick="toggleMenu()"]');
     const menu = document.getElementById("nav-links");
@@ -318,31 +316,25 @@ form.addEventListener("submit", function (e) {
       });
     }
 
-    // إعداد الوضع الداكن
-    const desktopToggle = document.getElementById('dark-mode-checkbox');
-    const mobileToggle = document.getElementById('dark-mode-checkbox-mobile');
+    // 🔆 الزر الجديد
+    const themeToggle = document.getElementById('themeToggle');
 
-    function applyDarkMode(enabled) {
-      document.documentElement.classList.toggle('dark', enabled);
-      document.body.classList.toggle('dark', enabled);
-      if (desktopToggle) desktopToggle.checked = enabled;
-      if (mobileToggle) mobileToggle.checked = enabled;
-      localStorage.setItem('darkMode', enabled ? 'enabled' : 'disabled');
-      document.body.style.transition = 'background-color 0.35s ease, color 0.35s ease';
+    // التفعيل عند التحميل
+    if (localStorage.getItem('theme') === 'dark') {
+      document.documentElement.classList.add('dark');
+      themeToggle.checked = true;
+    } else {
+      document.documentElement.classList.remove('dark');
+      themeToggle.checked = false;
     }
 
-    [desktopToggle, mobileToggle].forEach(toggle => {
-      if (toggle) toggle.addEventListener('change', e => applyDarkMode(e.target.checked));
+    // عند الضغط على الزر
+    themeToggle.addEventListener('change', () => {
+      const isDark = themeToggle.checked;
+      document.documentElement.classList.toggle('dark', isDark);
+      localStorage.setItem('theme', isDark ? 'dark' : 'light');
+      document.body.style.transition = 'background-color 0.4s ease, color 0.4s ease';
     });
-
-    const oldDesktopBtn = document.getElementById('dark-mode-btn');
-    const oldMobileBtn = document.getElementById('dark-mode-btn-mobile');
-    if (oldDesktopBtn)
-      oldDesktopBtn.addEventListener('click', () => applyDarkMode(!document.body.classList.contains('dark')));
-    if (oldMobileBtn)
-      oldMobileBtn.addEventListener('click', () => applyDarkMode(!document.body.classList.contains('dark')));
-
-    applyDarkMode(localStorage.getItem('darkMode') === 'enabled');
   }
 
   window.addEventListener('DOMContentLoaded', loadPage);

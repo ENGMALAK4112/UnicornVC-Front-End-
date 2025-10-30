@@ -1,132 +1,106 @@
 <style>
-  .switch {
-  /* border: 2px solid rebeccapurple; */
-  font-size: 17px;
+/* 🌗 زر تبديل الوضع - تصميم Josh Comeau */
+.themeToggle {
+  color: #666;
+  width: 2.5em;
+  height: 2.5em;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.st-sunMoonThemeToggleBtn {
   position: relative;
-  display: inline-block;
-  width: 3.5em;
-  height: 2em;
-}
-.switch input {
-  /* all: unset; */
-  opacity: 0;
-  width: 0;
-  height: 0;
-}
-.slider {
-  background-color: #2185d6;
-  position: absolute;
-  top: 0;
-  left: 0;
-  right: 0;
-  bottom: 0;
   cursor: pointer;
-  transition: 0.4s;
-  border-radius: 30px;
-  box-shadow: 0 0 0 rgba(33, 133, 214, 0);
-  transition: all 0.4s ease;
-}
-.slider:hover {
-  box-shadow: 0 0 15px rgba(33, 133, 214, 0.5);
 }
 
-.slider::before {
+.st-sunMoonThemeToggleBtn .themeToggleInput {
+  opacity: 0;
+  width: 100%;
+  aspect-ratio: 1;
+  cursor: pointer;
+}
+
+.st-sunMoonThemeToggleBtn svg {
   position: absolute;
-  content: "";
-  height: 1.4em;
-  width: 1.4em;
-  border-radius: 50%;
-  left: 10%;
-  bottom: 15%;
-  box-shadow: inset 15px -4px 0px 15px #fdf906;
-  background-color: #28096b;
-  transition: all 0.4s ease;
-  transform-origin: center;
-}
-.slider:hover::before {
-  transform: rotate(45deg);
-}
-.clouds_stars {
-  position: absolute;
-  content: "";
-  border-radius: 50%;
-  height: 10px;
-  width: 10px;
-  left: 70%;
-  bottom: 50%;
-  background-color: #fff;
-
-  transition: all 0.3s;
-  box-shadow:
-    -12px 0 0 0 white,
-    -6px 0 0 1.6px white,
-    0.3px 16px 0 white,
-    -6.5px 16px 0 white;
-  filter: blur(0.55px);
-}
-.switch input:checked ~ .clouds_stars {
-  transform: translateX(-20px);
-  height: 2px;
-  width: 2px;
-  border-radius: 50%;
-  left: 80%;
-  top: 15%;
-  background-color: #fff;
-  backdrop-filter: blur(10px);
-  transition: all 0.3s;
-  box-shadow:
-    -7px 10px 0 #fff,
-    8px 15px 0 #fff,
-    -17px 1px 0 #fff,
-    -20px 10px 0 #fff,
-    -7px 23px 0 #fff,
-    -15px 25px 0 #fff;
-  filter: none;
-  animation: twinkle 2s infinite;
-}
-.switch input:checked + .slider {
-  background-color: #28096b !important;
-}
-.switch input:checked + .slider::before {
-  transform: translateX(100%);
-  box-shadow: inset 8px -4px 0 0 #fff;
-}
-.switch input:checked + .slider:hover::before {
-  transform: translateX(100%) rotate(-45deg);
-}
-@keyframes twinkle {
-  0%,
-  100% {
-    opacity: 1;
-  }
-  50% {
-    opacity: 0.5;
-  }
+  left: 0;
+  width: 100%;
+  height: 100%;
+  transition: transform 0.5s ease;
+  transform: rotate(40deg);
 }
 
+.st-sunMoonThemeToggleBtn svg .sunMoon {
+  transform-origin: center center;
+  transition: inherit;
+  transform: scale(1);
+}
 
+.st-sunMoonThemeToggleBtn svg .sunRay {
+  transform-origin: center center;
+  transform: scale(0);
+}
+
+.st-sunMoonThemeToggleBtn svg mask > circle {
+  transition: transform 0.64s cubic-bezier(0.41, 0.64, 0.32, 1.575);
+  transform: translate(0px, 0px);
+}
+
+.st-sunMoonThemeToggleBtn .themeToggleInput:checked + svg {
+  transform: rotate(90deg);
+}
+
+.st-sunMoonThemeToggleBtn .themeToggleInput:checked + svg mask > circle {
+  transform: translate(16px, -3px);
+}
+
+.st-sunMoonThemeToggleBtn .themeToggleInput:checked + svg .sunMoon {
+  transform: scale(0.55);
+}
+
+.st-sunMoonThemeToggleBtn .themeToggleInput:checked + svg .sunRay {
+  animation: showRay1832 0.4s ease 0s 1 forwards;
+}
+
+@keyframes showRay1832 {
+  0% { transform: scale(0); }
+  100% { transform: scale(1); }
+}
 </style>
 
-<!-- Navbar -->
+<!-- 🔆 شريط التنقل -->
 <nav class="fixed top-0 left-0 w-full z-50 bg-white dark:bg-black py-4 shadow-sm dark:shadow-gray-700 dark:text-gray-300">
   <div class="container mx-auto flex justify-between items-center px-6">
-<!-- Logo -->
-<div class="flex items-center space-x-2 space-x-reverse h-16">
-  <img src="images/logo.png" alt="Unicorn VC Logo"
-       class="w-fit h-16 object-contain transform hover:scale-125 transition-transform duration-300">
-</div>
+    <!-- Logo -->
+    <div class="flex items-center space-x-2 space-x-reverse h-16">
+      <img src="images/logo.png" alt="Unicorn VC Logo"
+        class="w-fit h-16 object-contain transform hover:scale-125 transition-transform duration-300">
+    </div>
 
-    <!-- Desktop Links -->
-    <div class="hidden md:flex items-center space-x-8 space-x-reverse dark:bg-black">
+    <!-- روابط سطح المكتب -->
+    <div class="hidden md:flex items-center space-x-8 space-x-reverse">
       <a href="index.html" class="text-sm font-medium text-gray-700 dark:text-gray-300 hover:text-blue-900 dark:hover:text-blue-400">الرئيسية</a>
       <a href="aboutus.html" class="text-sm font-medium text-gray-700 dark:text-gray-300 hover:text-blue-900 dark:hover:text-blue-400">من نحن</a>
       <a href="#footer-placeholder" class="text-sm font-medium text-gray-700 dark:text-gray-300 hover:text-blue-900 dark:hover:text-blue-400">تواصل بنا</a>
 
-      <!-- 🔆 زر الوضع الداكن الجديد -->
-      <label class="switch" id="dark-toggle-desktop">
-        <input type="checkbox" id="dark-mode-checkbox" />
-        <span class="slider"></span>
-        <span class="clouds_stars"></span>
+      <!-- 🌗 زر التبديل الجديد -->
+      <label for="themeToggle" class="themeToggle st-sunMoonThemeToggleBtn">
+        <input type="checkbox" id="themeToggle" class="themeToggleInput" />
+        <svg width="20" height="20" viewBox="0 0 20 20" fill="currentColor" stroke="none">
+          <mask id="moon-mask">
+            <rect x="0" y="0" width="20" height="20" fill="white"></rect>
+            <circle cx="11" cy="3" r="8" fill="black"></circle>
+          </mask>
+          <circle class="sunMoon" cx="10" cy="10" r="8" mask="url(#moon-mask)"></circle>
+          <g>
+            <circle class="sunRay" cx="18" cy="10" r="1.5"></circle>
+            <circle class="sunRay" cx="14" cy="16.928" r="1.5"></circle>
+            <circle class="sunRay" cx="6" cy="16.928" r="1.5"></circle>
+            <circle class="sunRay" cx="2" cy="10" r="1.5"></circle>
+            <circle class="sunRay" cx="6" cy="3.1718" r="1.5"></circle>
+            <circle class="sunRay" cx="14" cy="3.1718" r="1.5"></circle>
+          </g>
+        </svg>
       </label>
 
       <!-- زر اللغة -->
@@ -135,48 +109,35 @@
       </button>
 
       <a href="login.html">
-  <button
-    class="relative rounded-full bg-blue-900 dark:bg-blue-800 px-5 py-2 text-sm font-mono font-bold text-white transition-colors duration-300 ease-linear 
-    before:absolute before:right-1/2 before:top-1/2 before:-z-[1] before:h-3/4 before:w-2/3 before:origin-bottom-left before:-translate-y-1/2 before:translate-x-1/2 
-    before:animate-ping before:rounded-full before:bg-blue-500 hover:bg-blue-700 hover:before:bg-blue-700"
-  >
-    تسجيل الدخول
-  </button>
-</a>
-
+        <button class="relative rounded-full bg-blue-900 dark:bg-blue-800 px-5 py-2 text-sm font-mono font-bold text-white transition-colors duration-300 ease-linear 
+        before:absolute before:right-1/2 before:top-1/2 before:-z-[1] before:h-3/4 before:w-2/3 before:origin-bottom-left before:-translate-y-1/2 before:translate-x-1/2 
+        before:animate-ping before:rounded-full before:bg-blue-500 hover:bg-blue-700 hover:before:bg-blue-700">
+          تسجيل الدخول
+        </button>
+      </a>
     </div>
 
     <!-- زر القائمة للجوال -->
     <button onclick="toggleMenu()" class="md:hidden text-2xl text-gray-700 dark:text-gray-300">☰</button>
   </div>
-
-  <!-- قائمة الجوال -->
-  <div id="nav-links" class="hidden flex-col items-start space-y-2 mt-2 pb-2 md:hidden bg-gray-50 dark:bg-black shadow rounded-lg mx-4 transition-colors duration-500">
-    <a href="index.html" class="text-sm font-medium text-gray-700 dark:text-gray-300 hover:text-blue-900 dark:hover:text-blue-400">الرئيسية</a>
-    <a href="aboutus.html" class="text-sm font-medium text-gray-700 dark:text-gray-300 hover:text-blue-900 dark:hover:text-blue-400">من نحن</a>
-    <a href="#footer-placeholder" class="text-sm font-medium text-gray-700 dark:text-gray-300 hover:text-blue-900 dark:hover:text-blue-400">تواصل بنا</a>
-
-    <!-- زر الوضع الداكن للجوال -->
-    <label class="switch mx-3" id="dark-toggle-mobile">
-      <input type="checkbox" id="dark-mode-checkbox-mobile" />
-      <span class="slider"></span>
-      <span class="clouds_stars"></span>
-    </label>
-
-    <div class="flex space-x-2 space-x-reverse">
-      <button class="w-8 h-8 flex items-center justify-center rounded-full bg-gray-100 transition-colors duration-500">
-        <img src="images/trans2.png" alt="Language" class="w-5 h-5">
-      </button>
-      <a href="login.html">
-  <button
-    class="relative rounded-full bg-blue-900 dark:bg-blue-800 px-4 py-1.5 text-xs font-mono font-bold text-white transition-colors duration-300 ease-linear 
-    before:absolute before:right-1/2 before:top-1/2 before:-z-[1] before:h-3/4 before:w-2/3 before:origin-bottom-left before:-translate-y-1/2 before:translate-x-1/2 
-    before:animate-ping before:rounded-full before:bg-blue-500 hover:bg-blue-700 hover:before:bg-blue-700"
-  >
-    تسجيل الدخول
-  </button>
-</a>
-
-    </div>
-  </div>
 </nav>
+
+<script>
+// 🌗 منطق تفعيل الوضع الداكن
+const toggle = document.getElementById("themeToggle");
+
+if (localStorage.getItem("theme") === "dark") {
+  document.documentElement.classList.add("dark");
+  toggle.checked = true;
+}
+
+toggle.addEventListener("change", () => {
+  if (toggle.checked) {
+    document.documentElement.classList.add("dark");
+    localStorage.setItem("theme", "dark");
+  } else {
+    document.documentElement.classList.remove("dark");
+    localStorage.setItem("theme", "light");
+  }
+});
+</script>
