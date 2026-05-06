@@ -494,36 +494,64 @@ window.addEventListener("load", () => {
   }
 
   // 🌓 إعداد الزر الجديد (الشمس والهلال)
-  function setupHeaderJS() {
-    const toggleBtn = document.querySelector('[onclick="toggleMenu()"]');
-    const menu = document.getElementById("nav-links");
-    if (toggleBtn && menu) {
-      toggleBtn.addEventListener('click', () => {
-        menu.classList.toggle("hidden");
-        menu.classList.toggle("flex");
-      });
-    }
+function setupHeaderJS() {
+    // 1. تعريف دالة المنيو
+    window.toggleMenu = function() {
+        const links = document.getElementById('nav-links');
+        if (!links) return;
 
-    // 🔆 الزر الجديد
+        if (links.classList.contains('hidden')) {
+            links.classList.remove('hidden', 'lg:flex');
+            links.style.display = 'flex';
+            links.style.flexDirection = 'column';
+            links.style.alignItems = 'center';
+            links.style.gap = '25px';
+            
+            links.classList.add(
+                'absolute', 'top-full', 'left-0', 'w-full', 
+                'bg-white', 'dark:bg-black', 'p-10', 'shadow-2xl', 'z-50'
+            );
+
+            // تأمين ظهور العناصر وحجم الأيقونة
+            const childElements = links.querySelectorAll('a, button, label.themeToggle');
+            childElements.forEach(el => {
+                // إذا كان عنصر التبديل، نعطيه Flex للحفاظ على حجم الأيقونة
+                if (el.classList.contains('themeToggle')) {
+                    el.style.display = 'flex'; 
+                    el.style.transform = 'scale(2)'; // نكبر الأيقونة قليلاً لتسهيل الضغط
+                } else {
+                    el.style.display = 'block';
+                }
+                el.style.width = 'fit-content';
+                el.style.margin = '0 auto';
+            });
+        } else {
+            links.classList.add('hidden', 'md:flex');
+            links.style.display = '';
+            links.style.flexDirection = '';
+            links.classList.remove('absolute', 'top-full', 'left-0', 'w-full', 'bg-white', 'dark:bg-black', 'p-10', 'shadow-2xl', 'z-50');
+            
+            const childElements = links.querySelectorAll('a, button, label.themeToggle');
+            childElements.forEach(el => { 
+                el.style.display = ''; 
+                el.style.width = ''; 
+                el.style.margin = ''; 
+                el.style.transform = ''; 
+            });
+        }
+    };
+
+    // 2. تفعيل منطق الوضع الداكن (مهم جداً للعمل عند الضغط)
     const themeToggle = document.getElementById('themeToggle');
-
-    // التفعيل عند التحميل
-    if (localStorage.getItem('theme') === 'dark') {
-      document.documentElement.classList.add('dark');
-      themeToggle.checked = true;
-    } else {
-      document.documentElement.classList.remove('dark');
-      themeToggle.checked = false;
+    if (themeToggle) {
+        // نربط الحدث مرة أخرى لضمان الاستجابة
+        themeToggle.addEventListener('change', () => {
+            const isDark = themeToggle.checked;
+            document.documentElement.classList.toggle('dark', isDark);
+            localStorage.setItem('theme', isDark ? 'dark' : 'light');
+        });
     }
-
-    // عند الضغط على الزر
-    themeToggle.addEventListener('change', () => {
-      const isDark = themeToggle.checked;
-      document.documentElement.classList.toggle('dark', isDark);
-      localStorage.setItem('theme', isDark ? 'dark' : 'light');
-      document.body.style.transition = 'background-color 0.4s ease, color 0.4s ease';
-    });
-  }
+}
 
   window.addEventListener('DOMContentLoaded', loadPage);
 </script>
@@ -562,4 +590,3 @@ window.addEventListener('load', () => {
 
 </body>
 </html>
-

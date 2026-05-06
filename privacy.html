@@ -1,0 +1,135 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>سياسة الخصوصية | Unicorn VC</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+  <link href="https://fonts.googleapis.com/css2?family=Cairo:wght@400;700&display=swap" rel="stylesheet">
+  <script>
+    tailwind.config = { darkMode: 'class' }
+  </script>
+  <style>
+    body { font-family: 'Cairo', sans-serif; scroll-behavior: smooth; }
+    .policy-card { transition: transform 0.3s ease; }
+    .policy-card:hover { transform: translateY(-5px); }
+  </style>
+</head>
+<body class="bg-white dark:bg-black text-gray-800 dark:text-gray-200 transition-colors duration-300">
+
+  <div id="header-placeholder"></div>
+
+  <main class="pt-32 pb-20">
+   <!-- Header -->
+<section class="bg-gradient-to-r from-blue-700 to-blue-500 text-white py-24 text-center">
+  <h1 class="text-4xl font-bold mb-4">السياسة والخصوصية</h1>
+  <p class="max-w-2xl mx-auto opacity-90">
+    نحن ملتزمون بحماية خصوصيتك وضمان الشفافية في كيفية جمع معلوماتك الشخصية واستخدامها.
+  </p>
+  <p class="mt-4 text-sm opacity-80">آخر تحديث: 1 أغسطس 2025</p>
+</section>
+
+<!-- Content -->
+<section class="max-w-5xl mx-auto px-6 py-16 space-y-12">
+
+  <div class="bg-white p-8 rounded-2xl shadow">
+    <h2 class="text-xl font-bold mb-4">المقدمة</h2>
+    <p>
+      توضح سياسة الخصوصية هذه كيفية جمع واستخدام وحماية معلوماتك عند استخدامك لموقعنا وخدماتنا.
+      باستخدامك للموقع فإنك توافق على الشروط الموضحة في هذه السياسة.
+    </p>
+  </div>
+
+  <div class="bg-white p-8 rounded-2xl shadow">
+    <h2 class="text-xl font-bold mb-4">جمع المعلومات</h2>
+    <ul class="list-disc pr-6 space-y-2">
+      <li>الاسم والبريد الإلكتروني.</li>
+      <li>معلومات الاتصال.</li>
+      <li>بيانات الاستخدام داخل الموقع.</li>
+      <li>عنوان الـ IP ونوع المتصفح.</li>
+    </ul>
+  </div>
+
+  <div class="bg-white p-8 rounded-2xl shadow">
+    <h2 class="text-xl font-bold mb-4">استخدام المعلومات</h2>
+    <ul class="list-disc pr-6 space-y-2">
+      <li>تحسين جودة الخدمات.</li>
+      <li>التواصل مع المستخدمين.</li>
+      <li>تحليل الأداء وتجربة المستخدم.</li>
+      <li>تأمين الموقع ومنع الاحتيال.</li>
+    </ul>
+  </div>
+
+  <div class="bg-white p-8 rounded-2xl shadow">
+    <h2 class="text-xl font-bold mb-4">حماية البيانات</h2>
+    <p>
+      نستخدم إجراءات أمنية مناسبة لحماية بياناتك من الوصول غير المصرح به أو التعديل أو الإفشاء.
+    </p>
+  </div>
+
+  <div class="bg-white p-8 rounded-2xl shadow">
+    <h2 class="text-xl font-bold mb-4">مشاركة المعلومات</h2>
+    <p>
+      لا نقوم ببيع أو مشاركة معلوماتك الشخصية مع أطراف خارجية إلا عند الضرورة القانونية أو لتحسين الخدمة.
+    </p>
+  </div>
+
+  <div class="bg-white p-8 rounded-2xl shadow">
+    <h2 class="text-xl font-bold mb-4">ملفات تعريف الارتباط (Cookies)</h2>
+    <p>
+      يستخدم الموقع ملفات تعريف الارتباط لتحسين تجربة المستخدم وتحليل حركة الزوار.
+    </p>
+  </div>
+
+  <div class="bg-white p-8 rounded-2xl shadow">
+    <h2 class="text-xl font-bold mb-4">حقوق المستخدم</h2>
+    <ul class="list-disc pr-6 space-y-2">
+      <li>طلب الوصول إلى بياناتك.</li>
+      <li>تعديل أو حذف المعلومات.</li>
+      <li>سحب الموافقة في أي وقت.</li>
+    </ul>
+  </div>
+
+  <div class="bg-white p-8 rounded-2xl shadow">
+    <h2 class="text-xl font-bold mb-4">التعديلات على السياسة</h2>
+    <p>
+      قد نقوم بتحديث سياسة الخصوصية من وقت لآخر، وسيتم إشعار المستخدمين بأي تغييرات مهمة.
+    </p>
+  </div>
+
+  <div class="bg-white p-8 rounded-2xl shadow">
+    <h2 class="text-xl font-bold mb-4">التواصل معنا</h2>
+    <p>
+      في حال وجود أي استفسارات بخصوص سياسة الخصوصية يمكنكم التواصل معنا عبر صفحة الاتصال.
+    </p>
+  </div>
+
+</section>
+  </main>
+
+  <div id="footer-placeholder"></div>
+
+  <script>
+    async function loadPage() {
+      try {
+        // تحميل الهيدر
+        const headerRes = await fetch('header.html');
+        document.getElementById('header-placeholder').innerHTML = await headerRes.text();
+        
+        // تحميل الفوتر
+        const footerRes = await fetch('footer.html');
+        document.getElementById('footer-placeholder').innerHTML = await footerRes.text();
+
+        // تفعيل أزرار المنيو والدارك مود (الدالة التي كتبناها مسبقاً)
+        if (typeof setupHeaderJS === 'function') {
+          setupHeaderJS();
+        }
+      } catch (err) {
+        console.error("خطأ في تحميل المكونات:", err);
+      }
+    }
+
+    window.addEventListener('DOMContentLoaded', loadPage);
+  </script>
+</body>
+</html>
